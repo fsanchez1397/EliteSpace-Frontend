@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { MockComponent } from "../features/MockFeature/MockComponent";
-import SignupPage from "../features/auth/SignUpPage";
-
+import SignupPage from "../features/auth/SignupPage";
 
 function AppRouter() {
   return (

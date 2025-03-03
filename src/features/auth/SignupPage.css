@@ -8,8 +8,8 @@
 }
 
 .signup-card {
-  max-width: 500px;
-  width: 100%;
+  max-width: 400px;
+  width: 90%;
   border-radius: 8px;
 }
 
@@ -39,18 +39,18 @@
   font-weight: 500;
 }
 
-.login-link-container {
+.signin-link-container {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 24px;
 }
 
-.login-link, .terms-link {
-  color: #5b3e96;
+.signin-link, .terms-link {
+  color: #5b3e96 !important;
   font-weight: 500;
 }
 
-.verification-sent {
+/* .verification-sent {
   text-align: center;
-}
+} */

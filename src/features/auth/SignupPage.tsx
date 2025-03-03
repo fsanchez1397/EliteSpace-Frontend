@@ -25,6 +25,8 @@ const SignupPage = () => {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
+    dob: '',
     password: '',
     confirmPassword: ''
   });
@@ -41,7 +43,7 @@ const SignupPage = () => {
 
 
    // Handle input changes
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -124,12 +126,12 @@ const SignupPage = () => {
     <div className="signup-container">
       <Card className="signup-card">
         <CardContent className="signup-card-content">
-          <Typography variant="h3" className="signup-title">
-            Elite Space
+          <Typography variant="h6" className="signup-title">
+            Logo
           </Typography>
           
-          <Typography variant="body2" className="signup-subtitle">
-            Create your tenant account
+          <Typography variant="h4" className="signup-subtitle">
+            Create Account
           </Typography>
           
           {/* Error Message */}
@@ -142,23 +144,23 @@ const SignupPage = () => {
           {/* Success after email sent */}
           {verificationSent ? (
             <div className="verification-sent">
-              <Alert severity="success" sx={{ mb: 3 }}>
+              <Alert severity="success" className="margin-bottom">
                 Verification email sent!
               </Alert>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" component="p" className="margin-bottom">
                 We've sent a verification link to <strong>{formData.email}</strong>
               </Typography>
-              <Typography variant="body2" paragraph>
-                Please check your email and click the verification link to complete signup!
+              <Typography variant="body2" component="p" className="margin-bottom">
+                Please check your email and click the verification link to complete signup.
               </Typography>
+
               <Button
-                component={Router
-                }
+                component={Router}
                 to="/login"
                 variant="contained"
                 color="primary"
                 fullWidth
-                sx={{ mt: 3 }}
+                className="margin-top"
               >
                 Go to Login
               </Button>
@@ -177,6 +179,7 @@ const SignupPage = () => {
                 value={formData.firstName}
                 onChange={handleChange}
                 required
+                className="signup-form-input"
               />
               
               <TextField
@@ -188,6 +191,7 @@ const SignupPage = () => {
                 value={formData.lastName}
                 onChange={handleChange}
                 required
+                className="signup-form-input"
               />
               
               <TextField
@@ -200,8 +204,33 @@ const SignupPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="signup-form-input"
+              />
+
+              <TextField
+                label="Phone"
+                name="phone"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="signup-form-input"
               />
               
+              <TextField
+                name="dob"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="date"
+                value={formData.dob}
+                onChange={handleChange}
+                className="signup-form-input"
+              />
+
               <TextField
                 label="Password"
                 name="password"
@@ -213,6 +242,7 @@ const SignupPage = () => {
                 onChange={handleChange}
                 required
                 helperText="At least 8 characters"
+                className="signup-form-input"
               />
               
               <TextField
@@ -225,6 +255,7 @@ const SignupPage = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
+                className="signup-form-input"
               />
               
               <FormControlLabel
@@ -242,7 +273,6 @@ const SignupPage = () => {
                     </Link>
                   </span>
                 }
-                sx={{ mt: 2 }}
               />
               
               <Button
@@ -254,20 +284,20 @@ const SignupPage = () => {
                 disabled={loading}
                 className="signup-button"
               >
-                Create Account
+                Register
               </Button>
             </form>
           )}
 
           {/* Already have account link */}
-          <Box className="login-link-container">
+          <Box className="signin-link-container">
             <Typography variant="body2">
               Already have an account? 
             </Typography>
             <Link 
               component={Router} 
               to="/login" 
-              className="login-link"
+              className="signin-link"
             >
               Sign in
             </Link>
