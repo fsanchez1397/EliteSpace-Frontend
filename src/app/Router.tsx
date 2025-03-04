@@ -7,7 +7,6 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<MockComponent />}></Route>
-        <Route path="/" element={<MockComponent />}></Route>
         <Route path="/api-call" element={<TestApiCall />}></Route>
       </Routes>
     </Router>
