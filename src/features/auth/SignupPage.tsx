@@ -1,5 +1,3 @@
-// dont need supabaseclient anymore or impot b/c single api call to backend. Backend's going to check if tenant exists, create acct, send email, handle supabase sutff.
-
 import { useState } from "react";
 import {
   Card,
@@ -28,7 +26,6 @@ const SignupPage = () => {
     confirmPassword: "",
   });
 
-  // agree to terms states? w check box. check with team
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,7 +53,7 @@ const SignupPage = () => {
       return false;
     }
 
-    // Check password length
+    // Check pass length
     if (formData.password.length < 8) {
       setError("Password must be at least 8 characters");
       return false;
@@ -71,7 +68,7 @@ const SignupPage = () => {
     return true;
   };
 
-  // Handle form submission
+  // Handle form sub
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -103,7 +100,6 @@ const SignupPage = () => {
       // Show success message
       setVerificationSent(true);
 
-      // Should I handle this error differently to typescript type like interface?? I would need help or do more research on this
     } catch (error: unknown) {
       setError(
         (error as { message?: string }).message ||
