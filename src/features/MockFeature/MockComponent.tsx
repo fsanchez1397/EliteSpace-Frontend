@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { type RootState } from "../../stores/store";
 import { addPerson } from "./mockSlice";
 
+import { OneTapReporting } from "../OneTapReporting/OneTapReporting";
+
 export const MockComponent = () => {
   const people = useSelector((state: RootState) => state.mock.mockArray);
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ export const MockComponent = () => {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <h1>Mock Component</h1>
         {people.map((person: string, index) => {
           return (
@@ -23,7 +25,8 @@ export const MockComponent = () => {
           );
         })}
       </div>
-      <button onClick={handleAddPerson}>Add person</button>
+      <button onClick={handleAddPerson}>Add person</button> */}
+      <OneTapReporting />
     </div>
   );
 };
