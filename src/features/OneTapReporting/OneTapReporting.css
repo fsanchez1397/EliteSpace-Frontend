@@ -1,7 +1,12 @@
 .container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .button-container {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }

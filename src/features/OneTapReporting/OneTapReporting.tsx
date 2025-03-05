@@ -18,10 +18,6 @@ export const OneTapReporting = () => {
     setSelectedIssue(event.target.value);
   };
 
-  const handleSubmit = () => {
-    console.log("Issue Reported:", selectedIssue);
-  };
-
   return (
     <>
       <div className="container">
