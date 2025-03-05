@@ -58,7 +58,7 @@ const PasswordReset: React.FC = () => {
     >
       <Card sx={{ width: 400, p: 3, boxShadow: 3 }}>
         <CardContent>
-          <Typography variant="h6" color="primary" align="center">
+          <Typography variant="h6" align="center">
             Logo
           </Typography>
           <Typography variant="h5" align="center" mb={2}>
