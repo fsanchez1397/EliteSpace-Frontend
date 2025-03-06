@@ -80,6 +80,9 @@ export const OneTapReporting = () => {
         <div className="button-container">
           <Stack direction="row" spacing={2}>
             <Button variant="contained">Submit</Button>
+            <Button variant="outlined" color="error">
+              Cancel
+            </Button>
           </Stack>
         </div>
       </div>
