@@ -68,7 +68,9 @@ const PasswordReset: React.FC = () => {
             Reset Password
           </Typography>
 
-          {error && <Alert severity="error">{error}</Alert>}
+          {error && (
+            <Alert severity="error">Supabase database stuffs comin soon</Alert>
+          )}
           {success ? (
             <Alert severity="success">Password reset email sent!</Alert>
           ) : (
