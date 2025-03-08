@@ -2,9 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { MockComponent } from "../features/MockFeature/MockComponent";
 
 import TestApiCall from "../features/TestApiCall/TestApiCall";
-
 import SignupPage from "../features/auth/SignupPage";
-
 import HomePage from "./routes/HomePage";
 import Login from "../features/Login/Login";
 
