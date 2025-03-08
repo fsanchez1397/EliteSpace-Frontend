@@ -14,7 +14,7 @@ import {
 import { Link as Router } from "react-router";
 
 const SignupPage = () => {
-  // form states:
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,7 +30,6 @@ const SignupPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [verificationSent, setVerificationSent] = useState(false);
 
-  //  input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -41,24 +40,19 @@ const SignupPage = () => {
     });
   };
 
-  // Form validation
   const validateForm = () => {
-    // Clear any previous errors
     setError(null);
 
-    // Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords don't match");
       return false;
     }
 
-    // Check pass length
     if (formData.password.length < 8) {
       setError("Password must be at least 8 characters");
       return false;
     }
 
-    // Check terms agreement
     if (!agreeToTerms) {
       setError("You must agree to the terms and conditions");
       return false;
@@ -67,17 +61,14 @@ const SignupPage = () => {
     return true;
   };
 
-  // Handle form sub
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate the form
     if (!validateForm()) return;
 
     setLoading(true);
 
     try {
-      // Send signup data to the backend endpoint
       const response = await fetch("http://localhost:3000/auth/register", {
         method: "POST",
         headers: {
@@ -89,14 +80,11 @@ const SignupPage = () => {
         }),
       });
 
-
-      // Handle error response
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || "Error creating account");
       }
 
-      // Show success message
       setVerificationSent(true);
 
     } catch (error: unknown) {
