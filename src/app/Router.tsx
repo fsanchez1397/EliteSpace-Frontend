@@ -7,12 +7,12 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/mock" element={<MockComponent />}></Route> */}
+        <Route path="/mock" element={<MockComponent />}></Route>
         <Route
           path="/"
           element={<HomePage />}
         ></Route>
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/register" element={<SignupPage />} />
       </Routes>
     </Router>
   );

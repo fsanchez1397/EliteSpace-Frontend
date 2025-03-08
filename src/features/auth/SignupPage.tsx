@@ -12,7 +12,6 @@ import {
   Link,
 } from "@mui/material";
 import { Link as Router } from "react-router";
-import "./SignupPage.css";
 
 const SignupPage = () => {
   // form states:
@@ -79,7 +78,7 @@ const SignupPage = () => {
 
     try {
       // Send signup data to the backend endpoint
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("http://localhost:3000/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,11 +89,11 @@ const SignupPage = () => {
         }),
       });
 
-      const data = await response.json();
 
       // Handle error response
       if (!response.ok) {
-        throw new Error(data.message || "Error creating account");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Error creating account");
       }
 
       // Show success message
@@ -136,6 +135,7 @@ const SignupPage = () => {
               <Typography variant="body2" mt={1}>
                 Please check your email and click the verification link.
               </Typography>
+
               <Button
                 component={Router}
                 to="/login"
@@ -257,7 +257,7 @@ const SignupPage = () => {
                 to="/login"
                 sx={{ color: "primary.main" }}
               >
-                Sign in
+                Log in
               </Link>
             </Typography>
           </Box>
