@@ -59,10 +59,10 @@ export const TenantSupport = () => {
 
   return (
     <>
-      <Stack className="tenant-support-container">
+      <Stack maxWidth="md">
         <Typography variant="h3"> Tenant Support</Typography>
         <Stack sx={{ mt: 4 }} className="tenant-question-one">
-          <Typography variant="h6">
+          <Typography sx={{ m: 1 }} variant="h6">
             Which one of the following best describes the issue?
           </Typography>
         </Stack>
@@ -89,13 +89,13 @@ export const TenantSupport = () => {
           </FormControl>
         </Stack>
         <Stack sx={{ mt: 4 }} className="tenant-question-two">
-          <Typography variant="h6">
+          <Typography sx={{ m: 1 }} variant="h6">
             Kindly describe the issue below as descriptively as possible <br />{" "}
             so we can route you to the proper channel in our team.
           </Typography>
         </Stack>
 
-        <Stack spacing={2} sx={{ width: 500 }}>
+        <Stack sx={{ m: 1, width: 500 }}>
           <TextField
             id="issue-description"
             multiline
