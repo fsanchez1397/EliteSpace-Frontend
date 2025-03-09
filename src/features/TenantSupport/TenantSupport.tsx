@@ -9,7 +9,6 @@ import ListSubheader from "@mui/material/ListSubheader";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
-import "./TenantSupport.css";
 
 const issues = [
   {
@@ -103,15 +102,13 @@ export const TenantSupport = () => {
             variant="outlined"
           />
         </Stack>
-        <Stack className="button-container" direction="row" spacing={2}>
-          {/* <Stack direction="row" spacing={2}> */}
+        <Stack direction="row" spacing={2} justifyContent="center">
           <Button variant="contained">Submit</Button>
           <Button variant="outlined" color="error">
             Cancel
           </Button>
         </Stack>
       </Stack>
-      {/* </Stack> */}
     </>
   );
 };
