@@ -61,7 +61,7 @@ export const TenantSupport = () => {
     <>
       <Stack className="tenant-support-container">
         <Typography variant="h3"> Tenant Support</Typography>
-        <Stack className="tenant-question-one">
+        <Stack sx={{ mt: 4 }} className="tenant-question-one">
           <Typography variant="h6">
             Which one of the following best describes the issue?
           </Typography>
@@ -88,7 +88,7 @@ export const TenantSupport = () => {
             </Select>
           </FormControl>
         </Stack>
-        <Stack className="tenant-question-two">
+        <Stack sx={{ mt: 4 }} className="tenant-question-two">
           <Typography variant="h6">
             Kindly describe the issue below as descriptively as possible <br />{" "}
             so we can route you to the proper channel in our team.
@@ -103,15 +103,15 @@ export const TenantSupport = () => {
             variant="outlined"
           />
         </Stack>
-        <Stack className="button-container">
-          <Stack direction="row" spacing={2}>
-            <Button variant="contained">Submit</Button>
-            <Button variant="outlined" color="error">
-              Cancel
-            </Button>
-          </Stack>
+        <Stack className="button-container" direction="row" spacing={2}>
+          {/* <Stack direction="row" spacing={2}> */}
+          <Button variant="contained">Submit</Button>
+          <Button variant="outlined" color="error">
+            Cancel
+          </Button>
         </Stack>
       </Stack>
+      {/* </Stack> */}
     </>
   );
 };
