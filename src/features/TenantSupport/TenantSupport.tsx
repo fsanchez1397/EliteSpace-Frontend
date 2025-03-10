@@ -52,13 +52,6 @@ const issues = [
 ];
 
 export const TenantSupport = () => {
-  // const [selectedIssue, setSelectedIssue] = React.useState("");
-
-  // const handleChange = (event: SelectChangeEvent<string>) => {
-  //   setSelectedIssue(event.target.value);
-  //   console.log("Selected Issue:", event.target.value);
-  // };
-
   const dispatch = useDispatch();
   const selectedIssue = useSelector(
     (state: RootState) => state.issue.selectedIssue
