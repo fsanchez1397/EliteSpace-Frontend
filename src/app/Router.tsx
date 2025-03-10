@@ -3,6 +3,7 @@ import { MockComponent } from "../features/MockFeature/MockComponent";
 import SignupPage from "../features/auth/SignupPage";
 import HomePage from "./routes/HomePage";
 import GuestAccess from "../features/GuestAccess/GuestAccess";
+import GuestAccessKey from "../features/GuestAccess/GuestKey";
 
 function AppRouter() {
   return (
@@ -15,6 +16,8 @@ function AppRouter() {
         ></Route>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/guestaccess" element={<GuestAccess />} />
+        <Route path="/guestaccess/key" element={<GuestAccessKey />} />
+
       </Routes>
     </Router>
   );
