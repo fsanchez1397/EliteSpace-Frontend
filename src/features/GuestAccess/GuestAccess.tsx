@@ -5,6 +5,9 @@ import {
   TextField,
   Button,
   Typography,
+  FormControl,
+  MenuItem,
+  Select,
 } from "@mui/material";
 import { Link } from "react-router";
 
@@ -64,12 +67,23 @@ const GuestAccess = () => {
             }}
           >
             <InputLabel>Time Limit</InputLabel>
-            <TextField
+            {/* <TextField
               sx={{
-                width: "80%",
+                width: "30%",
                 margin: "0 auto",
               }}
-            />
+            /> */}
+              <FormControl sx={{ width: "80%", margin: "0 auto" }}>
+              <Select defaultValue="1">
+                <MenuItem value="1">60 minutes</MenuItem>
+                <MenuItem value="2">2 hours</MenuItem>
+                <MenuItem value="4">4 hours</MenuItem>
+                <MenuItem value="8">8 hours</MenuItem>
+                <MenuItem value="24">24 hours (1 day)</MenuItem>
+                <MenuItem value="48">48 hours (2 days)</MenuItem>
+                <MenuItem value="168">1 week</MenuItem>
+              </Select>
+            </FormControl>
           </Stack>
         </Stack>
         <Link
