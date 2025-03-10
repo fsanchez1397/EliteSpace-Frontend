@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import mockSlice from "../features/MockFeature/mockSlice";
+import issueReducer from "./issueSlice";
 
 const store = configureStore({
   reducer: {
     mock: mockSlice,
+    issue: issueReducer,
   },
 });
 

@@ -9,6 +9,9 @@ import ListSubheader from "@mui/material/ListSubheader";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Typography } from "@mui/material";
+import { setSelectedIssue } from "../../stores/issueSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../stores/store";
 
 const issues = [
   {
@@ -49,11 +52,20 @@ const issues = [
 ];
 
 export const TenantSupport = () => {
-  const [selectedIssue, setSelectedIssue] = React.useState("");
+  // const [selectedIssue, setSelectedIssue] = React.useState("");
+
+  // const handleChange = (event: SelectChangeEvent<string>) => {
+  //   setSelectedIssue(event.target.value);
+  //   console.log("Selected Issue:", event.target.value);
+  // };
+
+  const dispatch = useDispatch();
+  const selectedIssue = useSelector(
+    (state: RootState) => state.issue.selectedIssue
+  );
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    setSelectedIssue(event.target.value);
-    console.log("Selected Issue:", event.target.value);
+    dispatch(setSelectedIssue(event.target.value));
   };
 
   return (
