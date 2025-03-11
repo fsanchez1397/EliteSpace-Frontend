@@ -14,7 +14,7 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<MockComponent />}></Route>
-        <Route path="/tenantsupport" element={<TenantSupport />}></Route>
+        <Route path="/tenant-support" element={<TenantSupport />}></Route>
         <Route path="/api-call" element={<TestApiCall />}></Route>
         {/* <Route path="/mock" element={<MockComponent />}></Route> */}
         <Route
