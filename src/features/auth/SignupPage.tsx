@@ -90,7 +90,7 @@ const SignupPage = () => {
     } catch (error: unknown) {
       setError(
         (error as { message?: string }).message ||
-          "An error occurred during signup"
+          "An error occurred during register"
       );
     }
   };
