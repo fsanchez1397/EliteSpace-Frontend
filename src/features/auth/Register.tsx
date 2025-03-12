@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { Link as Router } from "react-router";
 
-const SignupPage = () => {
+const RegisterPage = () => {
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -61,7 +61,7 @@ const SignupPage = () => {
     return true;
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -136,7 +136,7 @@ const SignupPage = () => {
               </Button>
             </Box>
           ) : (
-            <form onSubmit={handleSignup}>
+            <form onSubmit={handleRegister}>
               <TextField
                 label="First Name"
                 name="firstName"
@@ -255,4 +255,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default RegisterPage;

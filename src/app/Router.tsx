@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import SignupPage from "../features/auth/SignupPage";
+import RegisterPage from "../features/auth/Register";
 import HomePage from "./routes/HomePage";
 import GuestParking from "../features/GuestParking/GuestParking";
 import GuestParkingApproved from "../features/GuestParking/GuestParkingApproved";
@@ -15,7 +15,7 @@ function AppRouter() {
         ></Route>
         <Route
           path="/register"
-          element={<SignupPage />}
+          element={<RegisterPage />}
         />
         <Route
           path="/parking"
@@ -24,6 +24,8 @@ function AppRouter() {
         <Route
           path="/parking/approved"
           element={<GuestParkingApproved />}
+        ></Route>
+        <Route
           path="/login"
           element={<Login />}
         ></Route>
