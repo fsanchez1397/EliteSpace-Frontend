@@ -10,7 +10,7 @@ import {
   Link,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router";
-import "./PasswordReset.css";
+
 
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>("");
