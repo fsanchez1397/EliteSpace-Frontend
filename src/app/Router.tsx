@@ -10,14 +10,10 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route path="/mock" element={<MockComponent />}></Route>
-        <Route
-          path="/"
-          element={<HomePage />}
-        ></Route>
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/guestaccess" element={<GuestAccess />} />
         <Route path="/guestaccess/key" element={<GuestAccessKey />} />
-
       </Routes>
     </Router>
   );
