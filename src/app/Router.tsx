@@ -13,7 +13,6 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/signup" element={<SignupPage />} />
         <Route path="/guestaccess" element={<GuestAccess />} />
         <Route path="/guestaccess/key" element={<GuestAccessKey />} />
         <Route path='/' element={<HomePage />}/>
