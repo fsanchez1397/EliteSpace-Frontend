@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { MockComponent } from "../features/MockFeature/MockComponent";
+import { TenantSupport } from "../features/TenantSupport/TenantSupport";
 
 import TestApiCall from "../features/TestApiCall/TestApiCall";
 
@@ -15,6 +16,7 @@ function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<MockComponent />}></Route>
+        <Route path="/tenant-support" element={<TenantSupport />}></Route>
         <Route path="/api-call" element={<TestApiCall />}></Route>
         {/* <Route path="/mock" element={<MockComponent />}></Route> */}
         <Route
