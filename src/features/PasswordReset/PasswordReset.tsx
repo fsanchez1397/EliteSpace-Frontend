@@ -11,16 +11,13 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import { Message } from "@mui/icons-material";
-
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -37,19 +34,16 @@ const PasswordReset: React.FC = () => {
           body: JSON.stringify({ email }),
         }
       );
-
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error(data.message || "Error sending password reset email");
       }
-
       setSuccess(true);
     } catch (error: unknown) {
       setError((error as { message?: string }).message || "An error occurred");
     }
   };
-
   return (
     <Box
       display="flex"
@@ -70,7 +64,6 @@ const PasswordReset: React.FC = () => {
           <Typography variant="h6" align="center" mb={2}>
             Reset Password
           </Typography>
-
           {error && <Alert severity="error">Something went wrong</Alert>}
           {success ? (
             <Alert severity="success">Password reset email sent!</Alert>
@@ -97,7 +90,6 @@ const PasswordReset: React.FC = () => {
               </Button>
             </form>
           )}
-
           <Box mt={2} textAlign="center">
             <Typography variant="body2">
               Remember your password?{" "}
@@ -115,5 +107,4 @@ const PasswordReset: React.FC = () => {
     </Box>
   );
 };
-
 export default PasswordReset;
