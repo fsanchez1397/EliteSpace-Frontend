@@ -10,7 +10,7 @@ import {
   Link,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router";
-
+import { Message } from "@mui/icons-material";
 
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -27,13 +27,16 @@ const PasswordReset: React.FC = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch("__supabase reset functionality?", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "http://localhost:3000/auth/forgot-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const data = await response.json();
 
@@ -68,9 +71,7 @@ const PasswordReset: React.FC = () => {
             Reset Password
           </Typography>
 
-          {error && (
-            <Alert severity="error">Supabase database stuffs comin soon</Alert>
-          )}
+          {error && <Alert severity="error">Something went wrong</Alert>}
           {success ? (
             <Alert severity="success">Password reset email sent!</Alert>
           ) : (
