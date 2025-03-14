@@ -28,7 +28,7 @@ const PasswordReset: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/auth/forgot-password",
+        "http://localhost:3000/auth/forgot-password", //hardcoded api URL for now but i think i need to create  .env file
         {
           method: "POST",
           headers: {
