@@ -12,10 +12,9 @@ import {
   Link,
 } from "@mui/material";
 import { Link as Router } from "react-router";
-import "./SignupPage.css";
 
-const SignupPage = () => {
-  // form states:
+const RegisterPage = () => {
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,7 +30,6 @@ const SignupPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [verificationSent, setVerificationSent] = useState(false);
 
-  //  input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -42,24 +40,19 @@ const SignupPage = () => {
     });
   };
 
-  // Form validation
   const validateForm = () => {
-    // Clear any previous errors
     setError(null);
 
-    // Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords don't match");
       return false;
     }
 
-    // Check pass length
-    if (formData.password.length < 8) {
-      setError("Password must be at least 8 characters");
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters");
       return false;
     }
 
-    // Check terms agreement
     if (!agreeToTerms) {
       setError("You must agree to the terms and conditions");
       return false;
@@ -68,18 +61,15 @@ const SignupPage = () => {
     return true;
   };
 
-  // Handle form sub
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate the form
     if (!validateForm()) return;
 
     setLoading(true);
 
     try {
-      // Send signup data to the backend endpoint
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("http://localhost:3000/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,20 +80,17 @@ const SignupPage = () => {
         }),
       });
 
-      const data = await response.json();
-
-      // Handle error response
       if (!response.ok) {
-        throw new Error(data.message || "Error creating account");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Error creating account");
       }
 
-      // Show success message
       setVerificationSent(true);
 
     } catch (error: unknown) {
       setError(
         (error as { message?: string }).message ||
-          "An error occurred during signup"
+          "An error occurred during register"
       );
     }
   };
@@ -136,6 +123,7 @@ const SignupPage = () => {
               <Typography variant="body2" mt={1}>
                 Please check your email and click the verification link.
               </Typography>
+
               <Button
                 component={Router}
                 to="/login"
@@ -148,7 +136,7 @@ const SignupPage = () => {
               </Button>
             </Box>
           ) : (
-            <form onSubmit={handleSignup}>
+            <form onSubmit={handleRegister}>
               <TextField
                 label="First Name"
                 name="firstName"
@@ -205,7 +193,7 @@ const SignupPage = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                helperText="At least 8 characters"
+                helperText="At least 6 characters"
               />
               <TextField
                 label="Confirm Password"
@@ -257,7 +245,7 @@ const SignupPage = () => {
                 to="/login"
                 sx={{ color: "primary.main" }}
               >
-                Sign in
+                Log in
               </Link>
             </Typography>
           </Box>
@@ -267,4 +255,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default RegisterPage;
