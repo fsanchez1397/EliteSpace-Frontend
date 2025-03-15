@@ -12,7 +12,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 const pages = ["Tenant Support", "Smart Package Locker", "Guest Access", "Guest Parking", "Digital Lease"];
-
 const settings = ["Profile", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
