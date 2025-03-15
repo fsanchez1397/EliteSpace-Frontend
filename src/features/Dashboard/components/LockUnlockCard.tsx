@@ -64,7 +64,7 @@ const card = (
       </CardActions>
       <CardActions>
       <Button size="small" variant={isLocked ? "contained" : "outlined"}
-                  color="warning"
+                  // color="warning"
                   startIcon={<LockOpenIcon />}
                   onClick={handleUnlock}
                   disabled={!isLocked}>
@@ -76,8 +76,8 @@ const card = (
 );
 
   return (
-<Box sx={{ minWidth: 275, flex: 1, height: { xs: height.xs, md: height.md } }}>
-<Card variant="outlined" sx={{ height: "100%",
+    <Box sx={{ minWidth: 275, height, flex: 1 }}>
+      <Card variant="outlined" sx={{ height: "100%",
           p: 1,
           borderColor: isLocked ? theme.palette.secondary.main : theme.palette.warning.main,
           borderWidth: 1,
