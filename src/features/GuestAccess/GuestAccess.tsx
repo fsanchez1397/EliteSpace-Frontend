@@ -75,7 +75,7 @@ const GuestAccess = () => {
               marginBottom: "10px"
             }}
           >
-            Generate a temporary access key for you visitors
+            Generate a temporary access key for your visitors
           </Typography>
           
           <Stack
