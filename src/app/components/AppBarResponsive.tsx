@@ -18,6 +18,10 @@ const pages = [
     path: '/',
   },
   {
+    name: 'Dashboard',
+    path: '/dashboard',
+  },
+  {
     name: 'Tenant Support',
     path: '/tenant-support',
   },
