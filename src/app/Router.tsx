@@ -21,16 +21,12 @@ function AppRouter() {
         <Route path="/parking" element={<GuestParking />} />
         <Route path="/parking/approved" element={<GuestParkingApproved />} />
         <Route path="/tenant-support" element={<TenantSupport />} />
+        <Route path="/guestaccess" element={<GuestAccess />} />
+        <Route path="/guestaccess/key" element={<GuestAccessKey />} />
         <Route path="/password-reset" element={<PasswordReset />} />
         <Route path="/smartpackage" element={<SmartPackage />} />
         <Route path="/smartpackage/:id" element={<PackageDetails />} />
-        <Route path="/register" element={<RegisterPage />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/parking' element={<GuestParking />}/>
-        <Route path='/parking/approved' element={<GuestParkingApproved />}/>
-        <Route path="/tenant-support" element={<TenantSupport />}/>
-        <Route path="/guestaccess" element={<GuestAccess />} />
-        <Route path="/guestaccess/key" element={<GuestAccessKey />} />
+
       </Routes>
     </Router>
   );

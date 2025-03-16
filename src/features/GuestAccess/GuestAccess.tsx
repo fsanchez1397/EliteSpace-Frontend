@@ -78,34 +78,35 @@ const GuestAccess = () => {
             Generate a temporary access key for your visitors
           </Typography>
           
-          <Stack
-            sx={{
-              width: "90%",
-              gap: "20px",
+          <InputLabel 
+            sx={{ 
+              width: "100%", 
+              marginBottom: "10px" 
             }}
           >
-            <Stack
-              sx={{
-                width: "100%",
-                gap: "10px",
-              }}
-            >
-              <InputLabel>Guest Name</InputLabel>
-              <TextField
-                sx={{
-                  width: "90%",
-                  margin: "0 auto",
-                }}
-              />
-            </Stack>
-            <Stack
-              sx={{
-                width: "100%",
-                gap: "10px",
-              }}
-            >
-              <InputLabel>Time Limit</InputLabel>
-              <FormControl sx={{ width: "80%", margin: "0 auto" }}>
+            Guest Name
+          </InputLabel>
+          <TextField
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+            }}
+          />
+          
+          <InputLabel 
+            sx={{ 
+              width: "100%", 
+              marginBottom: "10px" 
+            }}
+          >
+            Time Limit
+          </InputLabel>
+          <FormControl 
+            sx={{ 
+              width: "100%", 
+              marginBottom: "20px" 
+            }}
+          >
                 <Select defaultValue="1">
                   <MenuItem value="1">60 minutes</MenuItem>
                   <MenuItem value="2">2 hours</MenuItem>
@@ -116,8 +117,6 @@ const GuestAccess = () => {
                   <MenuItem value="168">1 week</MenuItem>
                 </Select>
               </FormControl>
-            </Stack>
-          </Stack>
           <Link
             to="/guestaccess/key"
             style={{
@@ -134,7 +133,6 @@ const GuestAccess = () => {
                 width: "50%",
                 height: "50px",
                 margin: "0 auto",
-                marginTop: "10px",
               }}
             >
               Generate Key
