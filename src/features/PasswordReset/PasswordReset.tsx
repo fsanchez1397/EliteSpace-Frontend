@@ -10,7 +10,6 @@ import {
   Link,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router";
-import { Message } from "@mui/icons-material";
 const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
