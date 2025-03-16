@@ -13,13 +13,15 @@ import { SmartPackage } from '../features/SmartPackage/SmartPackage';
 import { PackageDetails } from '../features/SmartPackage/PackageDetails';
 import ResponsiveAppBar from './components/AppBarResponsive';
 import ResetPassword from '../features/ResetPassword/ResetPassword';
+import LandingPage from '../features/Home/LandingPage';
 
 function AppRouter() {
   return (
     <Router>
       <ResponsiveAppBar />
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/dashboard' element={<HomePage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/parking' element={<GuestParking />} />
