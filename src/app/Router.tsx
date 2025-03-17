@@ -8,6 +8,7 @@ import { TenantSupport } from '../features/TenantSupport/TenantSupport';
 import PasswordReset from '../features/PasswordReset/PasswordReset';
 import { SmartPackage } from '../features/SmartPackage/SmartPackage';
 import { PackageDetails } from '../features/SmartPackage/PackageDetails';
+import ResetPassword from '../features/ResetPassword/ResetPassword';
 
 function AppRouter() {
   return (
@@ -25,6 +26,7 @@ function AppRouter() {
         <Route path='/' element={<HomePage />}></Route>
         <Route path='/parking' element={<GuestParking />}></Route>
         <Route path='/parking/approved' element={<GuestParkingApproved />}></Route>
+        <Route path='/reset-password' element={<ResetPassword />}></Route>
       </Routes>
     </Router>
   );
