@@ -1,17 +1,3 @@
-
-import { useState } from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  TextField,
-  Button,
-  Typography,
-  Alert,
-  Link,
-} from "@mui/material";
-import { Link as RouterLink } from "react-router";
-=======
 import { useState } from 'react';
 import { Box, Card, CardContent, TextField, Button, Typography, Alert, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router';
@@ -20,28 +6,18 @@ const PasswordReset: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccess(false);
 
     try {
-
-      const response = await fetch(
-        "http://localhost:3000/auth/forgot-password", //hardcoded api URL for now but i think i need to create  .env file
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
-
-      const response = await fetch('__supabase reset functionality?', {
+      const response = await fetch("http://localhost:3000/auth/forgot-password") {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,11 +30,13 @@ const PasswordReset: React.FC = () => {
       if (!response.ok) {
         throw new Error(data.message || 'Error sending password reset email');
       }
+
       setSuccess(true);
     } catch (error: unknown) {
       setError((error as { message?: string }).message || 'An error occurred');
     }
   };
+
   return (
     <Box
       display='flex'
@@ -80,11 +58,7 @@ const PasswordReset: React.FC = () => {
             Reset Password
           </Typography>
 
-          {error && <Alert severity="error">Something went wrong</Alert>}
-
-
           {error && <Alert severity='error'>Supabase database stuffs comin soon</Alert>}
-
           {success ? (
             <Alert severity='success'>Password reset email sent!</Alert>
           ) : (
@@ -111,21 +85,10 @@ const PasswordReset: React.FC = () => {
             </form>
           )}
 
-          <Box mt={2} textAlign="center">
-            <Typography variant="body2">
-              Remember your password?{" "}
-              <Link
-                component={RouterLink}
-                to="/login"
-                style={{ color: "#1a3b5d" }}
-              >
-
-
           <Box mt={2} textAlign='center'>
             <Typography variant='body2'>
               Remember your password?{' '}
               <Link component={RouterLink} to='/login' style={{ color: '#1a3b5d' }}>
-
                 Sign in
               </Link>
             </Typography>
@@ -135,4 +98,5 @@ const PasswordReset: React.FC = () => {
     </Box>
   );
 };
+
 export default PasswordReset;
