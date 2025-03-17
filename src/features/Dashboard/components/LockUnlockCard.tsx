@@ -73,7 +73,6 @@ const LockUnlock = ({ height }: CardProps) => {
           <Button
             size="small"
             variant={isLocked ? "contained" : "outlined"}
-            // color="warning"
             startIcon={<LockOpenIcon />}
             onClick={handleUnlock}
             disabled={!isLocked}
