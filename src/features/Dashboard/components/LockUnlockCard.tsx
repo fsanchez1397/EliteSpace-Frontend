@@ -1,10 +1,10 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import LockIcon from "@mui/icons-material/Lock";
@@ -12,11 +12,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useTheme } from "@mui/material/styles";
 
 interface CardProps {
-  height: HeightProps;
-}
-interface HeightProps {
-  xs: number;
-  md: number;
+  height: { xs: number; md: number };
 }
 
 const LockUnlock = ({ height }: CardProps) => {
@@ -86,20 +82,8 @@ const LockUnlock = ({ height }: CardProps) => {
   );
 
   return (
-    <Box
-      sx={{ minWidth: 275, flex: 1, height: { xs: height.xs, md: height.md } }}
-    >
-      <Card
-        variant="outlined"
-        sx={{
-          height: "100%",
-          p: 1,
-          borderColor: isLocked
-            ? theme.palette.secondary.main
-            : theme.palette.warning.main,
-          borderWidth: 1,
-        }}
-      >
+    <Box sx={{ minWidth: 275, height, flex: 1 }}>
+      <Card variant='outlined' sx={{ height: { ...height } }}>
         {card}
       </Card>
 
