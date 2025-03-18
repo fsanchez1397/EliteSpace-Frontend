@@ -10,7 +10,6 @@ import GuestAccessKey from '../features/GuestAccess/GuestKey';
 import PasswordReset from '../features/PasswordReset/PasswordReset';
 import { SmartPackage } from '../features/SmartPackage/SmartPackage';
 import { PackageDetails } from '../features/SmartPackage/PackageDetails';
-import AppBarResponsive from './components/AppBarResponsive';
 import ResetPassword from '../features/ResetPassword/ResetPassword';
 
 function AppRouter() {
