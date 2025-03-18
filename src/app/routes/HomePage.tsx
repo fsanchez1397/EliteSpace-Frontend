@@ -17,7 +17,7 @@ const HomePage = () => {
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <LockUnlock height={height} />
-          <DashboardCard title='One Tap Reporting' height={height} path='/tenant-support' />
+          <DashboardCard title='Tenant Support' height={height} path='/tenant-support' />
         </Stack>
 
         <Stack
