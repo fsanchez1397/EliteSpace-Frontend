@@ -9,10 +9,11 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Typography } from '@mui/material';
+import { Input, Typography } from '@mui/material';
 import { setSelectedIssue } from '../../stores/issueSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../stores/store';
+import { useNavigate } from 'react-router';
 
 const issues = [
   {
@@ -51,6 +52,12 @@ const issues = [
     ],
   },
 ];
+
+const navigate = useNavigate();
+
+const handleCancelButton = () => {
+  navigate('/');
+};
 
 export const TenantSupport = () => {
   const dispatch = useDispatch();
@@ -122,9 +129,12 @@ export const TenantSupport = () => {
             <Stack sx={{ m: 1, width: 500 }}>
               <TextField id='issue-description' multiline rows={4} variant='outlined' />
             </Stack>
+            <Stack>
+              <Input type='file' inputProps={{ accept: 'image/*' }} />
+            </Stack>
             <Stack direction='row' spacing={2} justifyContent='center'>
               <Button variant='contained'>Submit</Button>
-              <Button variant='outlined' color='error'>
+              <Button onClick={handleCancelButton} variant='outlined' color='error'>
                 Cancel
               </Button>
             </Stack>
