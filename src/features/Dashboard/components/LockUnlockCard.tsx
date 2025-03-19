@@ -40,55 +40,50 @@ const LockUnlock = ({ height }: CardProps) => {
 
   const card = (
     <React.Fragment>
-      <Typography
-        color={isLocked ? 'secondary.main' : 'warning.main'}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          fontWeight: theme.typography.h3.fontWeight,
-          mb: 1,
-        }}
-      >
-        {isLocked ? <LockIcon sx={{ mr: 1 }} /> : <LockOpenIcon sx={{ mr: 1 }} />}
-        Front Door is {isLocked ? 'Locked' : 'Unlocked'}
-      </Typography>
+      <Stack sx={{ alignItems: 'center', mt: 2 }}>
+        <Typography
+          color={isLocked ? 'secondary.main' : 'warning.main'}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            fontWeight: theme.typography.h3.fontWeight,
+            mb: 1,
+          }}
+        >
+          {isLocked ? <LockIcon sx={{ mr: 1 }} /> : <LockOpenIcon sx={{ mr: 1 }} />}
+          Front Door is {isLocked ? 'Locked' : 'Unlocked'}
+        </Typography>
 
-      <Stack direction='row'>
-        <CardActions>
-          <Button
-            size='small'
-            variant={isLocked ? 'contained' : 'outlined'}
-            startIcon={<LockIcon />}
-            onClick={handleLock}
-            disabled={isLocked}
-          >
-            Lock
-          </Button>
-        </CardActions>
-        <CardActions>
-          <Button
-            size='small'
-            variant={isLocked ? 'contained' : 'outlined'}
-            startIcon={<LockOpenIcon />}
-            onClick={handleUnlock}
-            disabled={!isLocked}
-          >
-            Unlock
-          </Button>
-        </CardActions>
+        <Stack direction='row'>
+          <CardActions>
+            <Button
+              size='small'
+              variant={isLocked ? 'contained' : 'outlined'}
+              startIcon={<LockIcon />}
+              onClick={handleLock}
+              disabled={isLocked}
+            >
+              Lock
+            </Button>
+          </CardActions>
+          <CardActions>
+            <Button
+              size='small'
+              variant={isLocked ? 'contained' : 'outlined'}
+              startIcon={<LockOpenIcon />}
+              onClick={handleUnlock}
+              disabled={!isLocked}
+            >
+              Unlock
+            </Button>
+          </CardActions>
+        </Stack>
       </Stack>
     </React.Fragment>
   );
 
   return (
-    <Box
-      sx={{
-        minWidth: 275,
-        flex: 1,
-        height: { xs: height.xs, md: height.md },
-        justifyContent: 'center',
-      }}
-    >
+    <Box sx={{ minWidth: 275, flex: 1, height: { xs: height.xs, md: height.md } }}>
       <Card
         variant='outlined'
         sx={{
