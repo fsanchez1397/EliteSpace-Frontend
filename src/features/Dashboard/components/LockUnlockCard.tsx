@@ -83,7 +83,14 @@ const LockUnlock = ({ height }: CardProps) => {
   );
 
   return (
-    <Box sx={{ minWidth: 275, flex: 1, height: { xs: height.xs, md: height.md } }}>
+    <Box
+      sx={{
+        minWidth: 275,
+        flex: 1,
+        height: { xs: height.xs, md: height.md },
+        justifyContent: 'center',
+      }}
+    >
       <Card
         variant='outlined'
         sx={{
