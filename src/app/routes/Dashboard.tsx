@@ -9,7 +9,7 @@ const otherCardHeight = { xs: 120, md: 300 };
 
 const Dashboard = () => {
   return (
-    <Container maxWidth='md'>
+    <Container maxWidth='md' sx={{ mt: 3 }}>
       <Stack spacing={2}>
         <Stack
           direction={{ xs: 'column', md: 'row' }}
