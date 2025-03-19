@@ -53,18 +53,18 @@ const issues = [
   },
 ];
 
-const navigate = useNavigate();
-
-const handleCancelButton = () => {
-  navigate('/');
-};
-
 export const TenantSupport = () => {
   const dispatch = useDispatch();
   const selectedIssue = useSelector((state: RootState) => state.issue.selectedIssue);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
     dispatch(setSelectedIssue(event.target.value));
+  };
+
+  const navigate = useNavigate();
+
+  const handleCancelButton = () => {
+    navigate('/');
   };
 
   return (
@@ -121,8 +121,8 @@ export const TenantSupport = () => {
             </Stack>
             <Stack sx={{ mt: 4 }} className='tenant-question-two'>
               <Typography sx={{ m: 1 }} variant='h6'>
-                Kindly describe the issue below as descriptively as possible <br /> so we can route
-                you to the proper channel in our team.
+                Kindly describe the issue below as descriptively as possible so we can route you to
+                the proper channel in our team.
               </Typography>
             </Stack>
 
