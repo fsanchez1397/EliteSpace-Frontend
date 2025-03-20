@@ -33,7 +33,6 @@ export const SmartPackage = () => {
         }
         const data = await response.json();
         setPackages(data);
-        console.log(data);
       } catch (error: any) {
         setError(error.message);
       } finally {
@@ -83,10 +82,10 @@ export const SmartPackage = () => {
         ) : error ? (
           <Typography color='error'>{error}</Typography>
         ) : packages.length > 0 ? (
-          packages.map((item) => (
+          packages.map((item, index) => (
             <Item
               key={item.id}
-              onClick={() => item.status !== 'retrieved' && handleItemClick(item.id)}
+              onClick={() => handleItemClick(item.id)}
               sx={{
                 cursor: item.status === 'retrieved' ? 'not-allowed' : 'pointer',
                 opacity: item.status === 'retrieved' ? 0.6 : 1,
@@ -94,7 +93,9 @@ export const SmartPackage = () => {
                 color: item.status === 'retrieved' ? 'gray' : 'black',
               }}
             >
-              <Typography>{item.package}</Typography>
+              <Typography>
+                {item.package} Package #{index + 1}
+              </Typography>
               <Typography>
                 Delivered {convertToLocalDateTime(item.deliveredDateTime ?? '').localDate}
               </Typography>
