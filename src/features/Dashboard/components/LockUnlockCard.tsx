@@ -40,7 +40,7 @@ const LockUnlock = ({ height }: CardProps) => {
 
   const card = (
     <React.Fragment>
-      <Stack sx={{ alignItems: 'center', mt: 2 }}>
+      <Stack sx={{ alignItems: 'center', mt: 3 }}>
         <Typography
           color={isLocked ? 'secondary.main' : 'warning.main'}
           sx={{
