@@ -10,11 +10,13 @@ import GuestAccessKey from '../features/GuestAccess/GuestKey';
 import PasswordReset from '../features/PasswordReset/PasswordReset';
 import { SmartPackage } from '../features/SmartPackage/SmartPackage';
 import { PackageDetails } from '../features/SmartPackage/PackageDetails';
+import ResponsiveAppBar from './components/AppBarResponsive';
 import ResetPassword from '../features/ResetPassword/ResetPassword';
 
 function AppRouter() {
   return (
     <Router>
+      <ResponsiveAppBar />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/register' element={<RegisterPage />} />
@@ -34,7 +36,3 @@ function AppRouter() {
 }
 
 export default AppRouter;
-
-
-
-
