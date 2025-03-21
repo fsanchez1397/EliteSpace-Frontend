@@ -10,12 +10,11 @@ import GuestAccessKey from '../features/GuestAccess/GuestKey';
 import PasswordReset from '../features/PasswordReset/PasswordReset';
 import { SmartPackage } from '../features/SmartPackage/SmartPackage';
 import { PackageDetails } from '../features/SmartPackage/PackageDetails';
-import AppBarResponsive from './components/AppBarResponsive';
+import ResetPassword from '../features/ResetPassword/ResetPassword';
 
 function AppRouter() {
   return (
     <Router>
-      <AppBarResponsive />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/register' element={<RegisterPage />} />
@@ -28,9 +27,14 @@ function AppRouter() {
         <Route path='/password-reset' element={<PasswordReset />} />
         <Route path='/smartpackage' element={<SmartPackage />} />
         <Route path='/smartpackage/:id' element={<PackageDetails />} />
+        <Route path='/update-password' element={<ResetPassword />}></Route>
       </Routes>
     </Router>
   );
 }
 
 export default AppRouter;
+
+
+
+
