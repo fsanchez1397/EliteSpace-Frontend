@@ -8,6 +8,7 @@ interface PackageInfo {
   package: string;
   deliveredDateTime: string;
   status: 'delivered' | 'retrieved';
+  code: string;
 }
 
 // const mockInformation = [
@@ -86,15 +87,9 @@ export const PackageDetails = () => {
   return (
     <Container sx={{ mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Stack sx={{ width: '100%', maxWidth: 400, mt: 2 }} spacing={2}>
-        <Button
-          variant='outlined'
-          onClick={() => navigate('/smartpackage')}
-          sx={{ alignSelf: 'flex-start' }}
-        >
+        <Button variant='outlined' onClick={handleBackClick} sx={{ alignSelf: 'flex-start' }}>
           Back
         </Button>
-
-        {/* ✅ Loading & Error Handling */}
         {loading ? (
           <Typography>Loading package details...</Typography>
         ) : error ? (
