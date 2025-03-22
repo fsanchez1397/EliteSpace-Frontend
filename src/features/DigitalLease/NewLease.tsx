@@ -9,13 +9,14 @@ import {
 import { TenantLeaseData } from './api/leaseApi';
 
 interface RenewalLeaseProps {
-  leaseData: TenantLeaseData,
-  signature: string,
-  setSignature: React.Dispatch<React.SetStateAction<string>>,
+  leaseData: TenantLeaseData;
+  signature: string;
+  isSigningLease: boolean;
+  setSignature: React.Dispatch<React.SetStateAction<string>>;
   handleSignLease: () => void;
 }
 
-const NewLease = ({ leaseData, signature, setSignature, handleSignLease }: RenewalLeaseProps) => {
+const NewLease = ({ leaseData, signature, setSignature, isSigningLease, handleSignLease }: RenewalLeaseProps) => {
   const currentDate = new Date().toLocaleDateString();
 
   return ( 
@@ -125,7 +126,8 @@ same legal force and effect as a manual signature.
             }}
           />
 
-          <Button 
+          <Button
+            loading={isSigningLease} 
             variant="contained" 
             size="large"
             sx={{

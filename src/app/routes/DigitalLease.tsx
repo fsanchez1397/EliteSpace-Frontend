@@ -10,7 +10,7 @@ import NewLease from '../../features/DigitalLease/NewLease';
 const DigitalLease = () => {
   const [signature, setSignature] = useState("");
   const {data: leaseData, isLoading: loadingLeaseData } = useGetLeaseQuery();
-  const [signLease, { isLoading: loadingSignLease, isError, isSuccess }] = useSignLeaseMutation();
+  const [signLease, { isLoading: isSigningLease, isSuccess }] = useSignLeaseMutation();
 
   const message = leaseData?.message;
 
@@ -42,6 +42,7 @@ const DigitalLease = () => {
           signature={signature} 
           setSignature={setSignature} 
           handleSignLease={handleSignLease}
+          isSigningLease={isSigningLease}
         />
       ) : message ? (
         <Grid2 container justifyContent="center" alignItems="center" sx={{ minHeight: '100vh' }}>
