@@ -83,17 +83,11 @@ export const TenantSupport = () => {
   const dispatch = useDispatch();
   const selectedIssue = useSelector((state: RootState) => state.issue.complaint.selectedIssue);
   const extraDetailsRef = useRef<HTMLInputElement>(null);
-
   const [sendComplaint] = useSendComplaintMutation();
 
+  //Handlers
   const handleChange = (event: SelectChangeEvent<string>) => {
     dispatch(setSelectedIssue(event.target.value));
-  };
-
-  const navigate = useNavigate();
-
-  const handleCancelButton = () => {
-    navigate('/');
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -106,6 +100,12 @@ export const TenantSupport = () => {
       priority: '',
     };
     sendComplaint(fullIssue);
+  };
+
+  const navigate = useNavigate();
+
+  const handleCancelButton = () => {
+    navigate('/');
   };
 
   return (
