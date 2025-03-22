@@ -68,7 +68,7 @@ export default function Hero() {
               variant='contained'
               color='primary'
               size='small'
-              sx={{ minWidth: 'fit-content' }}
+              sx={{ minWidth: 'fit-content', zIndex: 1 }}
               onClick={() => navigate('/login')}
             >
               Login
@@ -77,7 +77,7 @@ export default function Hero() {
               variant='contained'
               color='primary'
               size='small'
-              sx={{ minWidth: 'fit-content' }}
+              sx={{ minWidth: 'fit-content', zIndex: 1 }}
               onClick={() => navigate('/dashboard')}
             >
               Go to Dashboard
