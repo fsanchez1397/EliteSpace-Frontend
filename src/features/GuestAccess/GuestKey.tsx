@@ -114,7 +114,7 @@ const GuestAccessKey = () => {
           </Typography>
 
           <Link
-            to='/'
+            to='/dashboard'
             style={{
               textDecoration: 'none',
               width: '100%',
