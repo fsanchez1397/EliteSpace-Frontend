@@ -6,48 +6,30 @@ import { useState, useEffect } from 'react';
 interface PackageInfo {
   id: number;
   package: string;
-  deliveredDateTime: string;
+  delive: string;
   status: 'delivered' | 'retrieved';
-  code: string;
+  deliveryTime: string;
+  lockerCode: string;
 }
-
-// const mockInformation = [
-//   {
-//     id: 1,
-//     package: 'Package #1',
-//     deliveredHour: 16,
-//     deliveredMin: 16,
-//     deliveredDate: '2/12/25',
-//   },
-//   {
-//     id: 2,
-//     package: 'Package #2',
-//     deliveredDate: '2/12/25',
-//     deliveredHour: 10,
-//     deliveredMin: 30,
-//   },
-// ];
-
-const Item = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(1),
-  textAlign: 'center',
-}));
 
 export const PackageDetails = () => {
   const { id } = useParams<{ id: string }>();
-  // const packageDetails = mockInformation.find((pkg) => pkg.id === Number(id));
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [packageDetails, setPackageDetails] = useState<PackageInfo | null>(null);
+  const [lockerCode, setLockerCode] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleBackClick = () => {
     navigate('/smartpackage');
   };
 
+  const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+  }));
   useEffect(() => {
-    const fetchPackages = async () => {
+    const fetchLockerCode = async () => {
       try {
         const response = await fetch(`http://localhost:3000/smartpackage/${id}`, {
           method: 'GET',
@@ -58,17 +40,17 @@ export const PackageDetails = () => {
         }
         const data = await response.json();
         setPackageDetails(data);
+        setLockerCode(data.code);
       } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    fetchPackages();
+    fetchLockerCode();
   }, [id]);
 
   const convertToLocalDateTime = (isoFormat: string) => {
-    if (!isoFormat) return { localDate: 'N/A', localTime: 'N/A' }; //added
     const date = new Date(isoFormat);
 
     const localDate = date.toLocaleDateString([], {
@@ -99,16 +81,16 @@ export const PackageDetails = () => {
             <Item>
               <Typography>{packageDetails.package}</Typography>
               <Typography>
-                Delivered {convertToLocalDateTime(packageDetails.deliveredDateTime).localDate}
+                Delivered {convertToLocalDateTime(packageDetails.deliveryTime).localDate}
               </Typography>
               <Typography>
-                {convertToLocalDateTime(packageDetails.deliveredDateTime).localTime}
+                {convertToLocalDateTime(packageDetails.deliveryTime).localTime}
               </Typography>
             </Item>
             <Item sx={{ backgroundColor: '#28a2a2' }}>
               <Typography variant='h6'>Locker Access Code</Typography>
               <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-                {/* Code from backend goes here */} 12345
+                {lockerCode ? lockerCode : 'Loading...'}
               </Typography>
             </Item>
             <Typography>
