@@ -33,7 +33,7 @@ const Login = () => {
     try {
       const response = await login({ email, password }).unwrap();
       if (response.message === 'Signed in successfully') {
-        navigate('/');
+        navigate('/dashboard');
       }
     } catch (error: unknown) {
       if (error && typeof error === 'object' && 'status' in error) {
