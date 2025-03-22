@@ -20,14 +20,18 @@ export default function OutlinedCard({ title, height, path }: CardProps) {
           sx={{
             height: height,
             border: '1px solid #1a3b5d',
-            transition: 'border 0.3s ease-in-out',
-            '&:hover': { border: '1px solid #28a2a2' },
+            transition: 'border 0.3s ease-in',
+            '&:hover': {
+              border: '2px solid #28a2a2',
+              transform: 'scale(1.03)',
+              boxShadow: '0 0 10px 2px #28a2a2',
+            },
           }}
         >
           <CardContent>
             <Typography
               gutterBottom
-              sx={{ textAlign: 'center', color: 'text.secondary', fontSize: 14 }}
+              sx={{ textAlign: 'center', color: 'text.primary', fontSize: 14 }}
             >
               {title}
             </Typography>
