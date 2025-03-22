@@ -56,10 +56,6 @@ const settings = [
     name: 'Register',
     path: '/register',
   },
-  {
-    name: 'Forgot Password?',
-    path: '/password-reset',
-  },
 ];
 
 function ResponsiveAppBar() {
