@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import DigitalLease from './routes/DigitalLease';
-import HomePage from './routes/HomePage';
+import Dashboard from './routes/Dashboard';
 import RegisterPage from '../features/auth/Register';
 import Login from '../features/Login/Login';
 import GuestParking from '../features/GuestParking/GuestParking';
@@ -21,7 +21,7 @@ function AppRouter() {
       <ResponsiveAppBar />
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/dashboard' element={<HomePage />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/parking' element={<GuestParking />} />

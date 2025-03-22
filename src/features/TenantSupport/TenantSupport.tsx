@@ -105,7 +105,7 @@ export const TenantSupport = () => {
   const navigate = useNavigate();
 
   const handleCancelButton = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (
