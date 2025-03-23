@@ -4,11 +4,42 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router';
 
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import PeopleIcon from '@mui/icons-material/People';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import DescriptionIcon from '@mui/icons-material/Description';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+
 interface CardProps {
   title: string;
   height: { xs: number; md: number };
   path: string;
+  icon?: React.ReactNode;
 }
+
+const getIconForTitle = (title: string) => {
+  switch (title) {
+    case 'Smart Package Locker':
+      return <LocalShippingIcon sx={iconStyles} />;
+    case 'Guest Access':
+      return <PeopleIcon sx={iconStyles} />;
+    case 'Guest Parking':
+      return <DirectionsCarIcon sx={iconStyles} />;
+    case 'Digital Lease':
+      return <DescriptionIcon sx={iconStyles} />;
+    case 'Tenant Support':
+      return <SupportAgentIcon sx={iconStyles} />;
+    default:
+      return null;
+  }
+};
+
+const iconStyles = {
+  fontSize: 40,
+  color: '#28a2a2',
+  display: { xs: 'block', sm: 'none' },
+  mb: 1,
+};
 
 export default function OutlinedCard({ title, height, path }: CardProps) {
   return (
@@ -28,11 +59,11 @@ export default function OutlinedCard({ title, height, path }: CardProps) {
             },
           }}
         >
-          <CardContent>
-            <Typography
-              gutterBottom
-              sx={{ textAlign: 'center', color: 'text.primary', fontSize: 14 }}
-            >
+          <CardContent sx={{ textAlign: 'center' }}>
+            {/* Mobile-only icon */}
+            {getIconForTitle(title)}
+
+            <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 14 }}>
               {title}
             </Typography>
           </CardContent>
