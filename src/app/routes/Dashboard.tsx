@@ -7,7 +7,7 @@ import { Container } from '@mui/material';
 const height = { xs: 120, md: 150 };
 const otherCardHeight = { xs: 120, md: 300 };
 
-const HomePage = () => {
+const Dashboard = () => {
   return (
     <Container maxWidth='md'>
       <Stack spacing={2}>
@@ -45,4 +45,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Dashboard;
