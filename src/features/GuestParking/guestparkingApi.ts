@@ -17,14 +17,14 @@ export const guestParkingApi = createApi({
   endpoints: (builder) => ({
     submitParkingInfo: builder.mutation({
       query: ({ guestName, licensePlate, parkingId }: ParkingInfo) => ({
-        url: 'parking',
+        url: '/parking',
         method: 'POST',
         body: { guestName, licensePlate, parkingId },
       }),
     }),
     getParkingSpaces: builder.query({
       query: () => ({
-        url: 'parking',
+        url: '/parking',
         method: 'GET',
       }),
     }),
