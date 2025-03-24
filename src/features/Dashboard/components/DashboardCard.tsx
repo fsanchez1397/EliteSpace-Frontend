@@ -1,9 +1,5 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { Box, Card, CardContent, Typography } from '@mui/material/';
 import { Link } from 'react-router';
-
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PeopleIcon from '@mui/icons-material/People';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -59,7 +55,17 @@ export default function OutlinedCard({ title, height, path }: CardProps) {
             },
           }}
         >
-          <CardContent sx={{ textAlign: 'center' }}>
+          <CardContent
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              height: '100%',
+              px: 2,
+            }}
+          >
             {/* Mobile-only icon */}
             {getIconForTitle(title)}
 
