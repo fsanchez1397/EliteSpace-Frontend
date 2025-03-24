@@ -18,6 +18,10 @@ const pages = [
     path: '/',
   },
   {
+    name: 'Dashboard',
+    path: '/dashboard',
+  },
+  {
     name: 'Tenant Support',
     path: '/tenant-support',
   },
@@ -42,7 +46,7 @@ const pages = [
 const settings = [
   {
     name: 'Dashboard',
-    path: '/',
+    path: '/dashboard',
   },
   {
     name: 'Login',
@@ -51,10 +55,6 @@ const settings = [
   {
     name: 'Register',
     path: '/register',
-  },
-  {
-    name: 'Forgot Password?',
-    path: '/password-reset',
   },
 ];
 
