@@ -123,7 +123,7 @@ export const TenantSupport = () => {
           }}
         >
           <Stack
-            // maxWidth='md'
+            maxWidth='md'
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -146,12 +146,17 @@ export const TenantSupport = () => {
               {' '}
               Tenant Support
             </Typography>
-            <Stack spacing={3} sx={{ mt: 4, m: 1 }}>
+            <Stack
+              sx={{
+                width: '90%',
+                gap: '20px',
+              }}
+            >
               <Stack>
-                <Typography sx={{ mt: 4 }} variant='h6'>
+                <Typography variant='h6'>
                   Which one of the following best describes the issue?
                 </Typography>
-                <FormControl sx={{ width: 500 }} required>
+                <FormControl sx={{ width: '100%' }} required>
                   <InputLabel id='issue-label'>Issue</InputLabel>
                   <Select
                     labelId='issue-label'
@@ -181,7 +186,7 @@ export const TenantSupport = () => {
                   rows={4}
                   variant='outlined'
                   inputRef={extraDetailsRef}
-                  sx={{ width: 500 }}
+                  sx={{ width: '100%' }}
                 />
               </Stack>
               <Input type='file' inputProps={{ accept: 'image/*' }} disableUnderline={true} />
