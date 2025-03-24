@@ -12,6 +12,8 @@ interface PackageInfo {
   lockerCode: string;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const PackageDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -28,10 +30,12 @@ export const PackageDetails = () => {
     padding: theme.spacing(1),
     textAlign: 'center',
   }));
+
   useEffect(() => {
     const fetchLockerCode = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/smartpackage/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/smartpackage/${id}`, {
+          //double check this
           method: 'GET',
           credentials: 'include', // Important: This allows cookies to be sent
         });

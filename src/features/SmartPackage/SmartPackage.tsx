@@ -15,6 +15,8 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
 }));
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const SmartPackage = () => {
   const [packages, setPackages] = useState<PackageInfo[]>([]);
   const [error, setError] = useState('');
@@ -24,7 +26,7 @@ export const SmartPackage = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch('http://localhost:3000/smartpackage', {
+        const response = await fetch(`${API_BASE_URL}/demo/createPackages`, {
           method: 'GET',
           credentials: 'include', // Important: This allows cookies to be sent
         });
