@@ -50,7 +50,7 @@ function ManagementDashboard() {
   return (
     <Container>
       <Stack sx={{ marginBottom: 4, marginTop: 4 }}>
-        <Typography variant='h3'> Complaints</Typography>
+        <Typography variant='h3'>Complaints</Typography>
       </Stack>
       <Stack>
         {complaintsExample.map(
@@ -73,18 +73,6 @@ function ManagementDashboard() {
             />
           ),
         )}
-
-        {/* {complaintsExample.forEach(
-          ({ title, description, tenantName, status, priority }: complaintCardProps) => {
-            // <ComplaintCard
-            //   title={title}
-            //   description={description}
-            //   tenantName={tenantName}
-            //   status={status}
-            //   priority={priority}
-            // />;
-          },
-        )} */}
       </Stack>
     </Container>
   );
