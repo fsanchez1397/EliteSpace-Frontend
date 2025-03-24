@@ -13,6 +13,8 @@ import { useLoginMutation } from './api/loginApi';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link as RouteLink } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setTenantId } from '../../stores/tenantSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +23,7 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     setErrorMessage(null);
@@ -32,7 +35,9 @@ const Login = () => {
 
     try {
       const response = await login({ email, password }).unwrap();
+
       if (response.message === 'Signed in successfully') {
+        dispatch(setTenantId(response.tenantId)); // Dispatch tenantId to Redux
         navigate('/dashboard');
       }
     } catch (error: unknown) {
