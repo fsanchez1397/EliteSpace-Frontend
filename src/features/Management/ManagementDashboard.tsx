@@ -1,6 +1,5 @@
-import { Container, Stack, Typography, Card } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 import ComplaintCard from './ComplaintCard';
-import { ReactNode } from 'react';
 
 //Example Complaint obj
 interface complaintCardProps {
@@ -55,7 +54,14 @@ function ManagementDashboard() {
       </Stack>
       <Stack>
         {complaintsExample.map(
-          ({ title, description, tenantName, status, priority, complaintId }) => (
+          ({
+            title,
+            description,
+            tenantName,
+            status,
+            priority,
+            complaintId,
+          }: complaintCardProps) => (
             <ComplaintCard
               key={complaintId}
               title={title}
@@ -63,6 +69,7 @@ function ManagementDashboard() {
               tenantName={tenantName}
               status={status}
               priority={priority}
+              complaintId={complaintId}
             />
           ),
         )}
