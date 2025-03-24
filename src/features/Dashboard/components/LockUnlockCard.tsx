@@ -30,10 +30,12 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   const [showAlert, setShowAlert] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   React.useEffect(() => {
     const fetchLockState = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/locks/lock-state/${tenantId}`);
+        const response = await fetch(`${API_BASE_URL}/locks/lock-state/${tenantId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch lock state');
         }
@@ -48,11 +50,11 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
     };
 
     fetchLockState();
-  }, [tenantId, propTenantName]);
+  }, [tenantId, propTenantName, API_BASE_URL]);
 
   const handleLock = async () => {
     try {
-      const response = await fetch('http://localhost:3000/locks/lock-state', {
+      const response = await fetch(`${API_BASE_URL}/locks/lock-state`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +79,7 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
 
   const handleUnlock = async () => {
     try {
-      const response = await fetch('http://localhost:3000/locks/lock-state', {
+      const response = await fetch(`${API_BASE_URL}/locks/lock-state`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
