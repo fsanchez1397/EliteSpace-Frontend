@@ -78,7 +78,7 @@ export const SmartPackage = () => {
           borderRadius: '10px',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: 400, mt: 8.5 }} spacing={2}>
+        <Stack sx={{ width: '100%', maxWidth: 400, mt: 4 }} spacing={2}>
           <Typography
             variant='h5'
             sx={{

@@ -78,7 +78,14 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position='static'>
+    <AppBar
+      position='static'
+      elevation={0}
+      sx={{
+        backgroundColor: 'transparent',
+        color: '#fff',
+      }}
+    >
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           {/* Mobile */}
