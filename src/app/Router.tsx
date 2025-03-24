@@ -45,7 +45,6 @@ function AppRouter() {
         <Route path='/password-reset' element={<PasswordReset />} />
         <Route path='/smartpackage' element={<SmartPackage />} />
         <Route path='/smartpackage/:id' element={<PackageDetails />} />
-
         <Route path='/update-password' element={<ResetPassword />}></Route>
         <Route path='/digital-lease' element={<DigitalLease />}></Route>
         <Route path='/manage-complaints' element={<ManagementDashboard />}></Route>
