@@ -72,42 +72,57 @@ export const SmartPackage = () => {
         position: 'relative',
       }}
     >
-      <Stack sx={{ width: '100%', maxWidth: 400, mt: 8.5 }} spacing={2}>
-        <Typography variant='h5' sx={{ fontWeight: 'medium', textAlign: 'center' }}>
-          Smart Package Locker
-        </Typography>
+      <Paper
+        sx={{
+          padding: '20px',
+          borderRadius: '10px',
+        }}
+      >
+        <Stack sx={{ width: '100%', maxWidth: 400, mt: 8.5 }} spacing={2}>
+          <Typography
+            variant='h5'
+            sx={{
+              textAlign: 'center',
+              fontWeight: 500,
+              fontSize: '1.5rem',
+              lineHeight: '1.2',
+            }}
+          >
+            Smart Package Locker
+          </Typography>
 
-        {loading ? (
-          <Typography>Loading...</Typography>
-        ) : error ? (
-          <Typography color='error'>{error}</Typography>
-        ) : packages.length > 0 ? (
-          packages.map((item, index) => (
-            <Item
-              key={item.id}
-              onClick={() => handleItemClick(item.id)}
-              sx={{
-                cursor: item.status === 'retrieved' ? 'not-allowed' : 'pointer',
-                opacity: item.status === 'retrieved' ? 0.6 : 1,
-                backgroundColor: item.status === 'retrieved' ? '#f0f0f0' : '#fff',
-                color: item.status === 'retrieved' ? 'gray' : 'black',
-              }}
-            >
-              <Typography>
-                {item.package} Package #{index + 1}
-              </Typography>
-              <Typography>
-                Delivered {convertToLocalDateTime(item.deliveredDateTime ?? '').localDate}
-              </Typography>
-              <Typography>
-                {convertToLocalDateTime(item?.deliveredDateTime ?? '').localTime}
-              </Typography>
-            </Item>
-          ))
-        ) : (
-          <Typography>No packages have been delivered</Typography>
-        )}
-      </Stack>
+          {loading ? (
+            <Typography>Loading...</Typography>
+          ) : error ? (
+            <Typography color='error'>{error}</Typography>
+          ) : packages.length > 0 ? (
+            packages.map((item, index) => (
+              <Item
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                sx={{
+                  cursor: item.status === 'retrieved' ? 'not-allowed' : 'pointer',
+                  opacity: item.status === 'retrieved' ? 0.6 : 1,
+                  backgroundColor: item.status === 'retrieved' ? '#f0f0f0' : '#fff',
+                  color: item.status === 'retrieved' ? 'gray' : 'black',
+                }}
+              >
+                <Typography>
+                  {item.package} Package #{index + 1}
+                </Typography>
+                <Typography>
+                  Delivered {convertToLocalDateTime(item.deliveredDateTime ?? '').localDate}
+                </Typography>
+                <Typography>
+                  {convertToLocalDateTime(item?.deliveredDateTime ?? '').localTime}
+                </Typography>
+              </Item>
+            ))
+          ) : (
+            <Typography>No packages have been delivered</Typography>
+          )}
+        </Stack>
+      </Paper>
     </Container>
   );
 };
