@@ -1,7 +1,15 @@
 import { Box, Stack, Button, Typography } from '@mui/material';
 import { Link } from 'react-router';
+import { useSelector } from 'react-redux';
+import { type RootState } from '../../stores/store';
+import { formatCurrentDate } from './utils/formatCurrentDate';
+import { formatCurrentTime } from './utils/formatCurrentTime';
 
 const GuestParkingApproved = () => {
+  const { guestName, licensePlate, selectedParkingSpot } = useSelector(
+    (state: RootState) => state.parking,
+  );
+
   return (
     <Box
       sx={{
@@ -27,16 +35,19 @@ const GuestParkingApproved = () => {
           Permit Issued
         </Typography>
         <Typography variant='body1'>
-          <strong>Guest Name:</strong> John Doe
+          <strong>Guest Name:</strong> {guestName}
         </Typography>
         <Typography variant='body1'>
-          <strong>License Plate:</strong> 54ELSPC
+          <strong>License Plate:</strong> {licensePlate}
         </Typography>
         <Typography variant='body1'>
-          <strong>Expiration Date:</strong> 03/10/2025
+          <strong>Parking spot:</strong> {selectedParkingSpot}
         </Typography>
         <Typography variant='body1'>
-          <strong>Expiration Time:</strong> 4:00 PM
+          <strong>Expiration Date:</strong> {formatCurrentDate()}
+        </Typography>
+        <Typography variant='body1'>
+          <strong>Expiration Time:</strong> {formatCurrentTime()}
         </Typography>
         <Link
           to='/parking'
