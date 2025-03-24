@@ -1,4 +1,4 @@
-import { Stack, InputLabel, TextField, Button, Typography, Container } from '@mui/material';
+import { Stack, InputLabel, TextField, Button, Typography, Container, Paper } from '@mui/material';
 import { Link } from 'react-router';
 
 const GuestParking = () => {
@@ -9,87 +9,94 @@ const GuestParking = () => {
         marginTop: '60px',
       }}
     >
-      <Stack
+      <Paper
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: { xs: 'auto', sm: 500 },
-          height: '100%',
-          margin: '0 auto',
-          gap: '50px',
+          padding: '20px',
+          borderRadius: '10px',
         }}
       >
-        <Typography
-          sx={{
-            textAlign: 'center',
-            fontWeight: 500,
-            fontSize: '1.5rem',
-            lineHeight: '1.2',
-          }}
-        >
-          Guest Parking
-          <br />
-          Permit
-        </Typography>
         <Stack
           sx={{
-            width: '90%',
-            gap: '20px',
-          }}
-        >
-          <Stack
-            sx={{
-              width: '100%',
-              gap: '10px',
-            }}
-          >
-            <InputLabel>Name</InputLabel>
-            <TextField
-              sx={{
-                width: '90%',
-                margin: '0 auto',
-              }}
-            />
-          </Stack>
-          <Stack
-            sx={{
-              width: '100%',
-              gap: '10px',
-            }}
-          >
-            <InputLabel>License Plate</InputLabel>
-            <TextField
-              sx={{
-                width: '90%',
-                margin: '0 auto',
-              }}
-            />
-          </Stack>
-        </Stack>
-        <Link
-          to='/parking/approved'
-          style={{
-            textDecoration: 'none',
-            width: '100%',
-            margin: '0 auto',
             display: 'flex',
-            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: { xs: 'auto', sm: 500 },
+            height: '100%',
+            margin: '0 auto',
+            gap: '50px',
           }}
         >
-          <Button
-            variant='contained'
+          <Typography
             sx={{
-              width: '60%',
-              height: '50px',
-              margin: '0 auto',
-              marginTop: '10px',
+              textAlign: 'center',
+              fontWeight: 500,
+              fontSize: '1.5rem',
+              lineHeight: '1.2',
             }}
           >
-            Issue Permit
-          </Button>
-        </Link>
-      </Stack>
+            Guest Parking
+            <br />
+            Permit
+          </Typography>
+          <Stack
+            sx={{
+              width: '90%',
+              gap: '20px',
+            }}
+          >
+            <Stack
+              sx={{
+                width: '100%',
+                gap: '10px',
+              }}
+            >
+              <InputLabel>Name</InputLabel>
+              <TextField
+                sx={{
+                  width: '90%',
+                  margin: '0 auto',
+                }}
+              />
+            </Stack>
+            <Stack
+              sx={{
+                width: '100%',
+                gap: '10px',
+              }}
+            >
+              <InputLabel>License Plate</InputLabel>
+              <TextField
+                sx={{
+                  width: '90%',
+                  margin: '0 auto',
+                }}
+              />
+            </Stack>
+          </Stack>
+          <Link
+            to='/parking/approved'
+            style={{
+              textDecoration: 'none',
+              width: '100%',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Button
+              variant='contained'
+              sx={{
+                width: '60%',
+                height: '50px',
+                margin: '0 auto',
+                marginTop: '10px',
+              }}
+            >
+              Issue Permit
+            </Button>
+          </Link>
+        </Stack>
+      </Paper>
     </Container>
   );
 };

@@ -123,7 +123,7 @@ export const TenantSupport = () => {
           }}
         >
           <Stack
-            maxWidth='md'
+            // maxWidth='md'
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -134,7 +134,18 @@ export const TenantSupport = () => {
               gap: '30px',
             }}
           >
-            <Typography variant='h3'> Tenant Support</Typography>
+            <Typography
+              sx={{
+                textAlign: 'center',
+                fontWeight: 500,
+                fontSize: '1.5rem',
+                lineHeight: '1.2',
+              }}
+              variant='h3'
+            >
+              {' '}
+              Tenant Support
+            </Typography>
             <Stack spacing={3} sx={{ mt: 4, m: 1 }}>
               <Stack>
                 <Typography sx={{ mt: 4 }} variant='h6'>
