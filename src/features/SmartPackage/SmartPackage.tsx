@@ -31,7 +31,7 @@ export const SmartPackage = () => {
           credentials: 'include', // Important: This allows cookies to be sent
         });
         if (!response.ok) {
-          throw new Error('Failed to fetch packages');
+          throw new Error('You have no packages at this time. Please check back later');
         }
         const data = await response.json();
         setPackages(data);
