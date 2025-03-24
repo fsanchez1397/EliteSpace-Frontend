@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import mockSlice from '../features/MockFeature/mockSlice';
 import issueReducer from './issueSlice';
-import parkingReducer from '../features/GuestParking/parkingSlice';
 import { userApi } from '../features/Services/userSlice';
 import { loginApi } from '../features/Login/api/loginApi';
 import { passwordResetApi } from '../features/PasswordReset/api/passwordresetApi';
@@ -10,6 +9,7 @@ import { leaseApi } from '../features/DigitalLease/api/leaseApi';
 import { accessCodesReducer } from './accessCodesSlice';
 import tenantReducer from './tenantSlice';
 import userReducer from './userSlice';
+import parkingReducer from '../features/GuestParking/parkingSlice';
 import { guestParkingApi } from '../features/GuestParking/guestparkingApi';
 
 const store = configureStore({
