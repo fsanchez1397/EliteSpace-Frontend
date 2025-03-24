@@ -21,6 +21,7 @@ const GuestParkingApproved = () => {
           gap: '30px',
           border: '3px solid #e0e0e0',
           padding: '3rem',
+          color: '#e0e0e0',
         }}
       >
         <Typography variant='h4' gutterBottom>
