@@ -83,6 +83,11 @@ const issues = [
       },
     ],
   },
+  {
+    category: 'Other',
+    backendCategory: 'other',
+    options: [{ value: 'Option 11', label: 'Other', priority: 'low' }],
+  },
 ];
 
 export const TenantSupport = () => {
@@ -107,7 +112,7 @@ export const TenantSupport = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const extraDetails = extraDetailsRef.current?.value || '';
     const fullIssue = {
@@ -115,7 +120,16 @@ export const TenantSupport = () => {
       extraDetails,
       img: '',
     };
-    sendComplaint(fullIssue);
+    const response = await sendComplaint(fullIssue);
+    
+    if (response.data.statusCode === 200) {
+      alert('Complaint submitted successfully!');
+      // Clear the form and reset the selected issue
+      dispatch(setSelectedIssue({ subCategory: '', category: '', priority: '' }));
+      if (extraDetailsRef.current) {
+        extraDetailsRef.current.value = '';
+      }
+    }
   };
 
   const navigate = useNavigate();
@@ -140,7 +154,6 @@ export const TenantSupport = () => {
               borderRadius: '10px',
             }}
           >
-
             <Stack
               maxWidth='md'
               sx={{
@@ -193,7 +206,6 @@ export const TenantSupport = () => {
                   />
                 </Stack>
                 <Input type='file' inputProps={{ accept: 'image/*' }} disableUnderline={true} />
-
               </Stack>
               <Stack direction='row' spacing={2} justifyContent='center'>
                 <Button type='submit' variant='contained'>
