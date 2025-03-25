@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Stack, Typography, Box } from '@mui/material';
 import ComplaintCard from './ComplaintCard';
 
 //Example Complaint obj
@@ -51,6 +51,12 @@ function ManagementDashboard() {
     <Container>
       <Stack sx={{ marginBottom: 4, marginTop: 4 }}>
         <Typography variant='h3'>Complaints</Typography>
+      </Stack>
+      <Stack>
+        <Typography>Legend</Typography>
+        <Box sx={{ width: 14, height: 14, bgcolor: 'red' }}></Box>Urgent
+        <Box sx={{ width: 14, height: 14, bgcolor: 'yellow' }}></Box>Medium
+        <Box sx={{ width: 14, height: 14, bgcolor: 'gray' }}></Box>Low
       </Stack>
       <Stack>
         {complaintsExample.map(
