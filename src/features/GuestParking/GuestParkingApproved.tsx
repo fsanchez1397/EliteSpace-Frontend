@@ -2,8 +2,8 @@ import { Box, Stack, Button, Typography } from '@mui/material';
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
 import { type RootState } from '../../stores/store';
-import { formatCurrentDate } from './utils/formatCurrentDate';
-import { formatCurrentTime } from './utils/formatCurrentTime';
+import { formatExpirationDate } from './utils/formatExpirationDate';
+import { formatExpirationTime } from './utils/formatExpirationTime';
 
 const GuestParkingApproved = () => {
   const { guestName, licensePlate, selectedParkingSpot } = useSelector(
@@ -44,10 +44,10 @@ const GuestParkingApproved = () => {
           <strong>Parking spot:</strong> {selectedParkingSpot}
         </Typography>
         <Typography variant='body1'>
-          <strong>Expiration Date:</strong> {formatCurrentDate()}
+          <strong>Expiration Date:</strong> {formatExpirationDate()}
         </Typography>
         <Typography variant='body1'>
-          <strong>Expiration Time:</strong> {formatCurrentTime()}
+          <strong>Expiration Time:</strong> {formatExpirationTime()}
         </Typography>
         <Link
           to='/parking'
