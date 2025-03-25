@@ -5,7 +5,7 @@ interface TenantState {
 }
 
 const initialState: TenantState = {
-  tenantId: null,
+  tenantId: localStorage.getItem('tenantId'), // Load tenantId from localStorage
 };
 
 const tenantSlice = createSlice({
@@ -14,9 +14,11 @@ const tenantSlice = createSlice({
   reducers: {
     setTenantId: (state, action: PayloadAction<string>) => {
       state.tenantId = action.payload;
+      localStorage.setItem('tenantId', action.payload); // Save tenantId in localStorage to persist accross refresh
     },
     clearTenantId: (state) => {
       state.tenantId = null;
+      localStorage.removeItem('tenantId'); // to Remove tenantId from localStorage.. when logging out
     },
   },
 });
