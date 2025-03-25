@@ -65,11 +65,13 @@ export const SmartPackage = () => {
   return (
     <Container
       sx={{
-        mt: 5,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        position: 'relative',
+        // mt: 5,
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center',
+        // position: 'relative',
+        // height: '600px',
+        marginTop: '60px',
       }}
     >
       <Paper
@@ -78,7 +80,18 @@ export const SmartPackage = () => {
           borderRadius: '10px',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: 400, mt: 4 }} spacing={2}>
+        <Stack
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: { xs: 'auto', sm: 500 },
+            height: '100%',
+            margin: '0 auto',
+            gap: '30px',
+          }}
+          spacing={2}
+        >
           <Typography
             variant='h5'
             sx={{

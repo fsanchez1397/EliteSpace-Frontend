@@ -5,6 +5,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import DescriptionIcon from '@mui/icons-material/Description';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { useTheme } from '@mui/material/styles';
 
 interface CardProps {
   title: string;
@@ -13,31 +14,33 @@ interface CardProps {
   icon?: React.ReactNode;
 }
 
-const getIconForTitle = (title: string) => {
-  switch (title) {
-    case 'Smart Package Locker':
-      return <LocalShippingIcon sx={iconStyles} />;
-    case 'Guest Access':
-      return <PeopleIcon sx={iconStyles} />;
-    case 'Guest Parking':
-      return <DirectionsCarIcon sx={iconStyles} />;
-    case 'Digital Lease':
-      return <DescriptionIcon sx={iconStyles} />;
-    case 'Tenant Support':
-      return <SupportAgentIcon sx={iconStyles} />;
-    default:
-      return null;
-  }
-};
-
-const iconStyles = {
-  fontSize: 40,
-  color: '#28a2a2',
-  display: { xs: 'block', sm: 'none' },
-  mb: 1,
-};
-
 export default function OutlinedCard({ title, height, path }: CardProps) {
+  const theme = useTheme();
+
+  const iconStyles = {
+    fontSize: 40,
+    color: theme.palette.secondary.main,
+    display: { xs: 'block', sm: 'none' },
+    mb: 1,
+  };
+
+  const getIconForTitle = (title: string) => {
+    switch (title) {
+      case 'Smart Package Locker':
+        return <LocalShippingIcon sx={iconStyles} />;
+      case 'Guest Access':
+        return <PeopleIcon sx={iconStyles} />;
+      case 'Guest Parking':
+        return <DirectionsCarIcon sx={iconStyles} />;
+      case 'Digital Lease':
+        return <DescriptionIcon sx={iconStyles} />;
+      case 'Tenant Support':
+        return <SupportAgentIcon sx={iconStyles} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Box sx={{ minWidth: 275, flex: 1 }}>
       <Link to={path} style={{ textDecoration: 'none' }}>
