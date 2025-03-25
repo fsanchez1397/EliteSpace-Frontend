@@ -175,13 +175,14 @@ const RegisterPage = () => {
                 required
               />
               <TextField
-                label=' '
+                label=''
                 name='dob'
                 type='date'
                 fullWidth
                 margin='normal'
                 value={formData.dob}
                 onChange={handleChange}
+                required
               />
               <TextField
                 label='Password'
