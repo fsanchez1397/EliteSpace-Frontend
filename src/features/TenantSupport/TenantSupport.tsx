@@ -24,6 +24,8 @@ import {
 const issues = [
   {
     category: 'Noise Complaint',
+    backendCategory: 'noise',
+
     options: [
       {
         value: 'Option 1',
@@ -39,6 +41,8 @@ const issues = [
   },
   {
     category: 'Maintenance Issue',
+    backendCategory: 'maintenance',
+
     options: [
       { value: 'Option 3', label: 'Leaking Faucet', priority: 'med' },
       { value: 'Option 4', label: 'Broken Heater/AC', priority: 'high' },
@@ -46,6 +50,8 @@ const issues = [
   },
   {
     category: 'Building/Common Area Issue',
+    backendCategory: 'building_issues',
+
     options: [
       {
         value: 'Option 5',
@@ -57,6 +63,7 @@ const issues = [
   },
   {
     category: 'Neighbor Disputes',
+    backendCategory: 'neighbor_disputes',
     options: [
       {
         value: 'Option 7',
@@ -68,6 +75,7 @@ const issues = [
   },
   {
     category: 'Package/Delivery Issue',
+    backendCategory: 'package_issues',
     options: [
       { value: 'Option 9', label: 'Package Stolen', priority: 'medium' },
       {
@@ -84,10 +92,22 @@ export const TenantSupport = () => {
   const selectedIssue = useSelector((state: RootState) => state.issue.complaint.selectedIssue);
   const extraDetailsRef = useRef<HTMLInputElement>(null);
   const [sendComplaint] = useSendComplaintMutation();
+  const issueMap = new Map<string, { category: string; priority: string }>();
+  //Loop through each issue, loop through each option in that issue and get teh issue category and priority for each label
+  issues.forEach((issue) => {
+    issue.options.forEach((option) => {
+      issueMap.set(option.label, { category: issue.backendCategory, priority: option.priority });
+    });
+  });
 
   //Handlers
   const handleChange = (event: SelectChangeEvent<string>) => {
-    dispatch(setSelectedIssue(event.target.value));
+    const currIssue = event.target.value;
+    const issueDetails = issueMap.get(currIssue);
+    if (issueDetails) {
+      dispatch(setSelectedIssue({ subCategory: currIssue, ...issueDetails }));
+    }
+    // dispatch(setSelectedIssue(event.target.value));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -97,8 +117,8 @@ export const TenantSupport = () => {
       selectedIssue,
       extraDetails,
       img: '',
-      priority: '',
     };
+    console.log('Full Issue:', fullIssue);
     sendComplaint(fullIssue);
   };
 
@@ -144,7 +164,7 @@ export const TenantSupport = () => {
                   <InputLabel id='issue-label'>Issue</InputLabel>
                   <Select
                     labelId='issue-label'
-                    value={selectedIssue}
+                    value={selectedIssue.subCategory}
                     onChange={handleChange}
                     input={<OutlinedInput label='Issue' />}
                   >
