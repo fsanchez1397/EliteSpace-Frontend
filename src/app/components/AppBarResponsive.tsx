@@ -80,7 +80,6 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       position='static'
-      elevation={0}
       sx={{
         backgroundColor: 'transparent',
         color: '#fff',

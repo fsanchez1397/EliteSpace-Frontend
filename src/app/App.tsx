@@ -1,16 +1,10 @@
 import AppProvider from './Provider';
 import AppRouter from './Router';
-import background from '../assets/Background.png';
+import './App.css';
 
 function App() {
   return (
-    <div
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-      }}
-    >
+    <div className='app-background'>
       <AppProvider>
         <AppRouter></AppRouter>
       </AppProvider>
