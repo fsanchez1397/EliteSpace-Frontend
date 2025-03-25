@@ -8,6 +8,7 @@ import { resetPasswordApi } from '../features/ResetPassword/api/Resetpasswordapi
 import { leaseApi } from '../features/DigitalLease/api/leaseApi';
 import { accessCodesReducer } from './accessCodesSlice';
 import tenantReducer from './tenantSlice';
+import userReducer from './userSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     [leaseApi.reducerPath]: leaseApi.reducer,
     accessCodes: accessCodesReducer,
     tenant: tenantReducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
