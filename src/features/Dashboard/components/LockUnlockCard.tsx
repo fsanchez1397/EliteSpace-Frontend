@@ -24,8 +24,8 @@ interface HeightProps {
 
 const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   const theme = useTheme();
-  const tenantId = useSelector((state: RootState) => state.tenant.tenantId || 'guest'); // Default to 'guest' if tenantId is null
-  const [isLocked, setIsLocked] = React.useState<boolean | null>(null);
+  const tenantId = useSelector((state: RootState) => state.tenant.tenantId);
+  const [isLocked, setIsLocked] = React.useState<boolean>(true); // Default to locked
   const [tenantName, setTenantName] = React.useState<string | null>(propTenantName || null);
   const [showAlert, setShowAlert] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -33,6 +33,12 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   React.useEffect(() => {
+    if (!tenantId) {
+      // If no tenantId (user not logged in), default to locked and do nothing
+      setIsLocked(true);
+      return;
+    }
+
     const fetchLockState = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/locks/lock-state/${tenantId}`);
@@ -53,6 +59,11 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   }, [tenantId, propTenantName, API_BASE_URL]);
 
   const handleLock = async () => {
+    if (!tenantId) {
+      setError('You must be logged in to lock the door.');
+      return;
+    }
+
     try {
       const response = await fetch(`${API_BASE_URL}/locks/lock-state`, {
         method: 'POST',
@@ -61,7 +72,7 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
         },
         body: JSON.stringify({
           tenantId,
-          tenantName: tenantName || 'Guest',
+          tenantName: tenantName,
           isLocked: true,
         }),
       });
@@ -78,6 +89,11 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   };
 
   const handleUnlock = async () => {
+    if (!tenantId) {
+      setError('You must be logged in to unlock the door.');
+      return;
+    }
+
     try {
       const response = await fetch(`${API_BASE_URL}/locks/lock-state`, {
         method: 'POST',
@@ -86,7 +102,7 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
         },
         body: JSON.stringify({
           tenantId,
-          tenantName: tenantName || 'Guest',
+          tenantName: tenantName,
           isLocked: false,
         }),
       });
@@ -105,10 +121,6 @@ const LockUnlockCard = ({ height, tenantName: propTenantName }: CardProps) => {
   const handleCloseAlert = () => {
     setShowAlert(false);
   };
-
-  if (isLocked === null) {
-    return <Typography>Loading...</Typography>;
-  }
 
   const card = (
     <React.Fragment>
