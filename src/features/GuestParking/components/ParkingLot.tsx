@@ -1,6 +1,5 @@
 import { Stack, Typography, Box } from '@mui/material';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import { useGetParkingSpacesQuery } from '../guestparkingApi';
 import { setSelectedParkingSpot } from '../parkingSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { type RootState } from '../../../stores/store';
@@ -10,18 +9,13 @@ type ParkingSpace = {
   status: string;
 };
 
-const ParkingLot = () => {
+type ParkingLotProps = {
+  parkingSpaces: ParkingSpace[];
+};
+
+const ParkingLot = ({ parkingSpaces }: ParkingLotProps) => {
   const selectedParkingSpot = useSelector((state: RootState) => state.parking.selectedParkingSpot);
   const dispatch = useDispatch();
-  const {
-    data: parkingSpaces,
-    isLoading: isParkingLoading,
-    error,
-  } = useGetParkingSpacesQuery(null);
-
-  if (isParkingLoading)
-    return <p style={{ margin: '0 auto', width: '230px' }}>Loading parking spaces...</p>;
-  if (error) return <p>Error loading parking spaces</p>;
 
   const handleParkingSpotClick = (parkingId: number) => {
     dispatch(setSelectedParkingSpot(parkingId));
