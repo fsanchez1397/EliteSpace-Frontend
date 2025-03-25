@@ -14,8 +14,18 @@ import { PackageDetails } from '../features/SmartPackage/PackageDetails';
 import ResponsiveAppBar from './components/AppBarResponsive';
 import ResetPassword from '../features/ResetPassword/ResetPassword';
 import LandingPage from '../features/Home/LandingPage';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setFetching, setUser } from '../stores/userSlice';
+import { verifyUserData } from '../features/auth/utils';
 
 function AppRouter() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    verifyUserData(dispatch, setFetching, setUser);
+  }, []);
+
   return (
     <Router>
       <ResponsiveAppBar />
