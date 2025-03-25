@@ -14,6 +14,9 @@ import { useLoginMutation } from './api/loginApi';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link as RouteLink } from 'react-router';
+import { setFetching, setUser } from '../../stores/userSlice';
+import { useDispatch } from 'react-redux';
+import { verifyUserData } from '../auth/utils';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,6 +25,7 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     setErrorMessage(null);
@@ -34,13 +38,18 @@ const Login = () => {
     try {
       const response = await login({ email, password }).unwrap();
       if (response.message === 'Signed in successfully') {
+        verifyUserData(dispatch, setFetching, setUser);
         navigate('/dashboard');
       }
     } catch (error: unknown) {
+      dispatch(setUser(null));
       if (error && typeof error === 'object' && 'status' in error) {
         const typedError = error as { status?: number; message: string };
         if (typedError.status === 401) {
           setErrorMessage('Invalid email or password. Please try again.');
+        }
+        if (typedError.status === 400) {
+          setErrorMessage('Check email and verify account to log in.');
         } else {
           setErrorMessage(typedError.message || 'Failed to retrieve session.');
         }

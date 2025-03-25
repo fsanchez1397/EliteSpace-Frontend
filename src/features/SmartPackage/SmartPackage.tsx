@@ -65,12 +65,7 @@ export const SmartPackage = () => {
   return (
     <Container
       sx={{
-        // mt: 5,
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-        // position: 'relative',
-        // height: '600px',
+        height: '600px',
         marginTop: '60px',
       }}
     >
