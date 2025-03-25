@@ -107,7 +107,7 @@ export const TenantSupport = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const extraDetails = extraDetailsRef.current?.value || '';
     const fullIssue = {
@@ -115,7 +115,8 @@ export const TenantSupport = () => {
       extraDetails,
       img: '',
     };
-    sendComplaint(fullIssue);
+    const response = await sendComplaint(fullIssue);
+    console.log(response);
   };
 
   const navigate = useNavigate();
@@ -140,7 +141,6 @@ export const TenantSupport = () => {
               borderRadius: '10px',
             }}
           >
-
             <Stack
               maxWidth='md'
               sx={{
@@ -193,7 +193,6 @@ export const TenantSupport = () => {
                   />
                 </Stack>
                 <Input type='file' inputProps={{ accept: 'image/*' }} disableUnderline={true} />
-
               </Stack>
               <Stack direction='row' spacing={2} justifyContent='center'>
                 <Button type='submit' variant='contained'>
