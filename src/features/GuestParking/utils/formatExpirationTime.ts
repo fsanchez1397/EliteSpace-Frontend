@@ -1,7 +1,9 @@
-export const formatCurrentTime = () => {
-  const today = new Date();
-  let hours = today.getHours();
-  const minutes = today.getMinutes();
+export const formatExpirationTime = () => {
+  const date = new Date();
+  date.setHours(date.getHours() + 24);
+
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
   const period = hours >= 12 ? 'PM' : 'AM';
 
   hours = hours % 12;
