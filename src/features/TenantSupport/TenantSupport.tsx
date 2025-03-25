@@ -83,6 +83,11 @@ const issues = [
       },
     ],
   },
+  {
+    category: 'Other',
+    backendCategory: 'other',
+    options: [{ value: 'Option 11', label: 'Other', priority: 'low' }],
+  },
 ];
 
 export const TenantSupport = () => {
@@ -117,6 +122,15 @@ export const TenantSupport = () => {
     };
     const response = await sendComplaint(fullIssue);
     console.log(response);
+    if (response) {
+      // if (response.statusCode === 200) {
+      alert('Complaint submitted successfully!');
+      // Clear the form and reset the selected issue
+      dispatch(setSelectedIssue({ subCategory: '', category: '', priority: '' }));
+      if (extraDetailsRef.current) {
+        extraDetailsRef.current.value = '';
+      }
+    }
   };
 
   const navigate = useNavigate();
