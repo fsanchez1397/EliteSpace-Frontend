@@ -1,10 +1,10 @@
 import AppProvider from './Provider';
 import AppRouter from './Router';
-import './App.css';
+import '../features/Home/LandingPage.css';
 
 function App() {
   return (
-    <div className='app-background'>
+    <div className='dashboard-page'>
       <AppProvider>
         <AppRouter></AppRouter>
       </AppProvider>

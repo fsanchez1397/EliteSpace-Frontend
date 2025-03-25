@@ -1,8 +1,0 @@
-/* App.css */
-.app-background {
-  background-image: url('../assets/Background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 100vh;
-}
