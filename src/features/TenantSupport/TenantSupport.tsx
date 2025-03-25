@@ -25,7 +25,6 @@ const issues = [
   {
     category: 'Noise Complaint',
     backendCategory: 'noise',
-
     options: [
       {
         value: 'Option 1',
@@ -42,7 +41,6 @@ const issues = [
   {
     category: 'Maintenance Issue',
     backendCategory: 'maintenance',
-
     options: [
       { value: 'Option 3', label: 'Leaking Faucet', priority: 'med' },
       { value: 'Option 4', label: 'Broken Heater/AC', priority: 'high' },
@@ -51,7 +49,6 @@ const issues = [
   {
     category: 'Building/Common Area Issue',
     backendCategory: 'building_issues',
-
     options: [
       {
         value: 'Option 5',
@@ -93,7 +90,7 @@ export const TenantSupport = () => {
   const extraDetailsRef = useRef<HTMLInputElement>(null);
   const [sendComplaint] = useSendComplaintMutation();
   const issueMap = new Map<string, { category: string; priority: string }>();
-  //Loop through each issue, loop through each option in that issue and get teh issue category and priority for each label
+  //Loop through each issue, loop through each option in that issue and get the issue category and priority for each label
   issues.forEach((issue) => {
     issue.options.forEach((option) => {
       issueMap.set(option.label, { category: issue.backendCategory, priority: option.priority });
@@ -107,7 +104,6 @@ export const TenantSupport = () => {
     if (issueDetails) {
       dispatch(setSelectedIssue({ subCategory: currIssue, ...issueDetails }));
     }
-    // dispatch(setSelectedIssue(event.target.value));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -118,7 +114,6 @@ export const TenantSupport = () => {
       extraDetails,
       img: '',
     };
-    console.log('Full Issue:', fullIssue);
     sendComplaint(fullIssue);
   };
 
