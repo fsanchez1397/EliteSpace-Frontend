@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
 }));
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const SmartPackage = () => {
   const [packages, setPackages] = useState<PackageInfo[]>([]);
@@ -23,10 +23,12 @@ export const SmartPackage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  const variable = 'https://elitespace-backend-development.onrender.com';
+
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/demo/createPackages`, {
+        const response = await fetch(`${variable}/smartpackage/`, {
           method: 'GET',
           credentials: 'include', // Important: This allows cookies to be sent
         });

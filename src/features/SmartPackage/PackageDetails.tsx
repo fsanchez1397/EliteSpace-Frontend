@@ -35,7 +35,6 @@ export const PackageDetails = () => {
     const fetchLockerCode = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/smartpackage/${id}`, {
-          //double check this
           method: 'GET',
           credentials: 'include', // Important: This allows cookies to be sent
         });
