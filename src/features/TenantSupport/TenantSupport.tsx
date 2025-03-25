@@ -121,8 +121,7 @@ export const TenantSupport = () => {
       img: '',
     };
     const response = await sendComplaint(fullIssue);
-    console.log(response);
-
+    
     if (response.data.statusCode === 200) {
       alert('Complaint submitted successfully!');
       // Clear the form and reset the selected issue
