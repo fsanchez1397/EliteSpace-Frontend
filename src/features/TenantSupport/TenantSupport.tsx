@@ -112,7 +112,7 @@ export const TenantSupport = () => {
     }
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const extraDetails = extraDetailsRef.current?.value || '';
     const fullIssue = {
