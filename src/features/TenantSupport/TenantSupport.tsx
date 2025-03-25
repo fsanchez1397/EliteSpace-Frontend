@@ -122,8 +122,8 @@ export const TenantSupport = () => {
     };
     const response = await sendComplaint(fullIssue);
     console.log(response);
-    if (response) {
-      // if (response.statusCode === 200) {
+
+    if (response.data.statusCode === 200) {
       alert('Complaint submitted successfully!');
       // Clear the form and reset the selected issue
       dispatch(setSelectedIssue({ subCategory: '', category: '', priority: '' }));
