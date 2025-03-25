@@ -16,7 +16,6 @@ import { Link as RouteLink } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setTenantId } from '../../stores/tenantSlice';
 import { setFetching, setUser } from '../../stores/userSlice';
-import { useDispatch } from 'react-redux';
 import { verifyUserData } from '../auth/utils';
 
 const Login = () => {
