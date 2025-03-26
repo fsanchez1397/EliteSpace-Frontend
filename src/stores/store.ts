@@ -25,7 +25,10 @@ const store = configureStore({
     accessCodes: accessCodesReducer,
     tenant: tenantReducer,
     user: userReducer,
+<<<<<<< HEAD
     [guestParkingApi.reducerPath]: guestParkingApi.reducer,
+=======
+>>>>>>> f773bdc (fix(parking): fix merge/build conflicts)
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
