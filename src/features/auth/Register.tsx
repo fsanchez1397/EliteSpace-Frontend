@@ -107,7 +107,7 @@ const RegisterPage = () => {
       <Card sx={{ width: 400, p: 3, boxShadow: 3 }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', m: 1 }}>
-            <Logo style={{ height: 40, width: 40, marginRight: 10 }} fill='#28a2a2' />
+            <Logo style={{ height: 150, width: 150 }} fill='#28a2a2' />
           </Box>
           <Typography variant='h4' align='center' mb={2}>
             Create Account

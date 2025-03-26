@@ -87,7 +87,7 @@ const Login = () => {
           sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: 'center' }}
         >
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', m: 1 }}>
-            <Logo style={{ height: 40, width: 40, marginRight: 10 }} fill='#28a2a2' />
+            <Logo style={{ height: 150, width: 150 }} fill='#28a2a2' />
           </Box>
           <Typography variant='h3' component='h1' fontWeight={600} sx={{ margin: 0 }}>
             EliteSpace
