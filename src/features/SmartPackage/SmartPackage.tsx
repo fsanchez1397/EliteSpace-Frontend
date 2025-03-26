@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
 }));
 
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const SmartPackage = () => {
   const [packages, setPackages] = useState<PackageInfo[]>([]);
@@ -23,28 +23,71 @@ export const SmartPackage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const variable = 'https://elitespace-backend-development.onrender.com';
+  // When user clicks smart package from dashboard retrieveEarlistPackage needs to be triggered and package list will load after
 
   useEffect(() => {
-    const fetchPackages = async () => {
-      try {
-        const response = await fetch(`${variable}/smartpackage/`, {
-          method: 'GET',
-          credentials: 'include', // Important: This allows cookies to be sent
-        });
-        if (!response.ok) {
-          throw new Error('You have no packages at this time. Please check back later');
-        }
-        const data = await response.json();
-        setPackages(data);
-      } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPackages();
+    const mockData = [
+      {
+        id: 1,
+        package: 'Amazon',
+        deliveredDateTime: '2025-03-26T13:45:00Z',
+        status: 'delivered',
+      },
+      {
+        id: 2,
+        package: 'Target',
+        deliveredDateTime: '2025-03-25T09:30:00Z',
+        status: 'retrieved',
+      },
+      {
+        id: 3,
+        package: 'Chewy',
+        deliveredDateTime: '2025-03-24T17:15:00Z',
+        status: 'delivered',
+      },
+    ];
+
+    setPackages(mockData);
+    setLoading(false);
   }, []);
+  //   const fetchPackages = async () => {
+  //     try {
+  //       const triggerResponse = await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         credentials: 'include',
+  //         body: JSON.stringify({}),
+  //       });
+
+  //       if (triggerResponse.status === 204) {
+  //         console.log('Demo script completed – no content returned (204)');
+  //       } else {
+  //         const result = await triggerResponse.json();
+  //         console.log('Demo script result:', result);
+  //       }
+  //       const packageResponse = await fetch(`${API_BASE_URL}/smartpackage`, {
+  //         method: 'GET',
+  //         credentials: 'include',
+  //       });
+
+  //       if (!packageResponse.ok) {
+  //         throw new Error('You have no packages at this time. Please check back later');
+  //       }
+
+  //       const data = await packageResponse.json();
+  //       setPackages(data);
+  //       console.log('Packages:', data);
+  //     } catch (error: any) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchPackages();
+  // }, []);
 
   const handleItemClick = (id: number) => {
     navigate(`/smartpackage/${id}`);

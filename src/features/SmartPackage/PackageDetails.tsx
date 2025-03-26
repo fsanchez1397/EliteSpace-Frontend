@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 interface PackageInfo {
   id: number;
   package: string;
-  delive: string;
   status: 'delivered' | 'retrieved';
   deliveryTime: string;
   lockerCode: string;
@@ -22,36 +21,56 @@ export const PackageDetails = () => {
   const [lockerCode, setLockerCode] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate('/smartpackage');
-  };
-
   const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
   }));
 
   useEffect(() => {
-    const fetchLockerCode = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/smartpackage/${id}`, {
-          method: 'GET',
-          credentials: 'include', // Important: This allows cookies to be sent
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch package details');
-        }
-        const data = await response.json();
-        setPackageDetails(data);
-        setLockerCode(data.code);
-      } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+    const mockData: PackageInfo = {
+      id: Number(id),
+      package: 'Amazon',
+      status: 'delivered',
+      deliveryTime: '2025-03-26T13:45:00Z',
+      lockerCode: 'X9B42',
     };
-    fetchLockerCode();
+    setPackageDetails(mockData);
+    setLockerCode(mockData.lockerCode);
+    setLoading(false);
   }, [id]);
+  //   const fetchLockerCode = async () => {
+  //     try {
+  //       const response = await fetch(`${API_BASE_URL}/smartpackage/${id}`, {
+  //         method: 'GET',
+  //         credentials: 'include',
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch package details');
+  //       }
+  //       const data = await response.json();
+  //       setPackageDetails(data);
+  //       setLockerCode(data.code);
+  //     } catch (error: any) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchLockerCode();
+  // }, [id]);
+
+  const handleBackClick = async () => {
+    // try {
+    //   await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
+    //     method: 'GET',
+    //     credentials: 'include',
+    //   });
+    navigate('/smartpackage');
+    // } catch (err) {
+    //   console.error('Package can not be retrieved at this time', err);
+    //   navigate('/smartpackage');
+    // }
+  };
 
   const convertToLocalDateTime = (isoFormat: string) => {
     const date = new Date(isoFormat);
