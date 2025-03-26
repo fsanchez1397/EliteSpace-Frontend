@@ -23,36 +23,15 @@ export const SmartPackage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // When user clicks smart package from dashboard retrieveEarlistPackage needs to be triggered and package list will load after
+  const hasRun = useRef(false);
 
   useEffect(() => {
-    //   const mockData = [
-    //     {
-    //       id: 1,
-    //       package: 'Amazon',
-    //       deliveredDateTime: '2025-03-26T13:45:00Z',
-    //       status: 'delivered',
-    //     },
-    //     {
-    //       id: 2,
-    //       package: 'Target',
-    //       deliveredDateTime: '2025-03-25T09:30:00Z',
-    //       status: 'retrieved',
-    //     },
-    //     {
-    //       id: 3,
-    //       package: 'Chewy',
-    //       deliveredDateTime: '2025-03-24T17:15:00Z',
-    //       status: 'delivered',
-    //     },
-    //   ];
+    if (hasRun.current) return;
+    hasRun.current = true;
 
-    //   setPackages(mockData);
-    //   setLoading(false);
-    // }, []);
     const fetchPackages = async () => {
       try {
-        const triggerResponse = await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
+        const triggerResponse = await fetch(`${API_BASE_URL}/demo/createPackages`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -12,6 +12,8 @@ interface PackageInfo {
   lockerCode: string;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const PackageDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -20,8 +22,21 @@ export const PackageDetails = () => {
   const [lockerCode, setLockerCode] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate('/smartpackage');
+  const handleBackClick = async () => {
+    try {
+      await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({}),
+      });
+      navigate('/smartpackage');
+    } catch (err) {
+      console.error('Failed to update package status:', err);
+      navigate('/smartpackage');
+    }
   };
 
   const Item = styled(Paper)(({ theme }) => ({
