@@ -73,18 +73,6 @@ function ManagementDashboard() {
             />
           ),
         )}
-
-        {/* {complaintsExample.forEach(
-          ({ title, description, tenantName, status, priority }: complaintCardProps) => {
-            // <ComplaintCard
-            //   title={title}
-            //   description={description}
-            //   tenantName={tenantName}
-            //   status={status}
-            //   priority={priority}
-            // />;
-          },
-        )} */}
       </Stack>
     </Container>
   );
