@@ -14,10 +14,13 @@ import { PackageDetails } from '../features/SmartPackage/PackageDetails';
 import ResponsiveAppBar from './components/AppBarResponsive';
 import ResetPassword from '../features/ResetPassword/ResetPassword';
 import LandingPage from '../features/Home/LandingPage';
+import ManagementDashboard from '../features/Management/ManagementDashboard';
+
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setFetching, setUser } from '../stores/userSlice';
 import { verifyUserData } from '../features/auth/utils';
+
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ function AppRouter() {
         <Route path='/smartpackage/:id' element={<PackageDetails />} />
         <Route path='/update-password' element={<ResetPassword />}></Route>
         <Route path='/digital-lease' element={<DigitalLease />}></Route>
+        <Route path='/manage-complaints' element={<ManagementDashboard />}></Route>
       </Routes>
     </Router>
   );
