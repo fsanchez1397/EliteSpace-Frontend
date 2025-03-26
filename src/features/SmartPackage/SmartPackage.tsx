@@ -1,6 +1,6 @@
 import { Paper, Stack, Container, Typography } from '@mui/material/';
 import { styled } from '@mui/material/styles';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 interface PackageInfo {
@@ -26,68 +26,68 @@ export const SmartPackage = () => {
   // When user clicks smart package from dashboard retrieveEarlistPackage needs to be triggered and package list will load after
 
   useEffect(() => {
-    const mockData = [
-      {
-        id: 1,
-        package: 'Amazon',
-        deliveredDateTime: '2025-03-26T13:45:00Z',
-        status: 'delivered',
-      },
-      {
-        id: 2,
-        package: 'Target',
-        deliveredDateTime: '2025-03-25T09:30:00Z',
-        status: 'retrieved',
-      },
-      {
-        id: 3,
-        package: 'Chewy',
-        deliveredDateTime: '2025-03-24T17:15:00Z',
-        status: 'delivered',
-      },
-    ];
+    //   const mockData = [
+    //     {
+    //       id: 1,
+    //       package: 'Amazon',
+    //       deliveredDateTime: '2025-03-26T13:45:00Z',
+    //       status: 'delivered',
+    //     },
+    //     {
+    //       id: 2,
+    //       package: 'Target',
+    //       deliveredDateTime: '2025-03-25T09:30:00Z',
+    //       status: 'retrieved',
+    //     },
+    //     {
+    //       id: 3,
+    //       package: 'Chewy',
+    //       deliveredDateTime: '2025-03-24T17:15:00Z',
+    //       status: 'delivered',
+    //     },
+    //   ];
 
-    setPackages(mockData);
-    setLoading(false);
+    //   setPackages(mockData);
+    //   setLoading(false);
+    // }, []);
+    const fetchPackages = async () => {
+      try {
+        const triggerResponse = await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({}),
+        });
+
+        if (triggerResponse.status === 204) {
+          console.log('Demo script completed – no content returned (204)');
+        } else {
+          const result = await triggerResponse.json();
+          console.log('Demo script result:', result);
+        }
+        const packageResponse = await fetch(`${API_BASE_URL}/smartpackage`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (!packageResponse.ok) {
+          throw new Error('You have no packages at this time. Please check back later');
+        }
+
+        const data = await packageResponse.json();
+        setPackages(data);
+        console.log('Packages:', data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPackages();
   }, []);
-  //   const fetchPackages = async () => {
-  //     try {
-  //       const triggerResponse = await fetch(`${API_BASE_URL}/demo/retrieveEarliestPackage`, {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         credentials: 'include',
-  //         body: JSON.stringify({}),
-  //       });
-
-  //       if (triggerResponse.status === 204) {
-  //         console.log('Demo script completed – no content returned (204)');
-  //       } else {
-  //         const result = await triggerResponse.json();
-  //         console.log('Demo script result:', result);
-  //       }
-  //       const packageResponse = await fetch(`${API_BASE_URL}/smartpackage`, {
-  //         method: 'GET',
-  //         credentials: 'include',
-  //       });
-
-  //       if (!packageResponse.ok) {
-  //         throw new Error('You have no packages at this time. Please check back later');
-  //       }
-
-  //       const data = await packageResponse.json();
-  //       setPackages(data);
-  //       console.log('Packages:', data);
-  //     } catch (error: any) {
-  //       setError(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchPackages();
-  // }, []);
 
   const handleItemClick = (id: number) => {
     navigate(`/smartpackage/${id}`);
