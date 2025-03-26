@@ -15,8 +15,7 @@ function ComplaintCard({
   priority,
   complaintId,
 }: complaintCardProps) {
-  //if priority === assign priorityColor red, yellow, gray
-  //   priority === 'High' ? 'Red' : 'Yellow';
+
   let priorityColor: string = '';
   if (priority === 'High') {
     priorityColor = 'red';
