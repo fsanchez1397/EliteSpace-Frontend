@@ -14,8 +14,9 @@ import { useLoginMutation } from './api/loginApi';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link as RouteLink } from 'react-router';
-import { setFetching, setUser } from '../../stores/userSlice';
 import { useDispatch } from 'react-redux';
+import { setTenantId } from '../../stores/tenantSlice';
+import { setFetching, setUser } from '../../stores/userSlice';
 import { verifyUserData } from '../auth/utils';
 
 const Login = () => {
@@ -37,7 +38,9 @@ const Login = () => {
 
     try {
       const response = await login({ email, password }).unwrap();
+
       if (response.message === 'Signed in successfully') {
+        dispatch(setTenantId(response.tenantId)); // Dispatch tenantId to Redux
         verifyUserData(dispatch, setFetching, setUser);
         navigate('/dashboard');
       }
