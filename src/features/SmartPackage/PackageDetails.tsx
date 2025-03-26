@@ -113,11 +113,11 @@ export const PackageDetails = () => {
                 {lockerCode ? lockerCode : 'Loading...'}
               </Typography>
             </Item>
-            <Typography>
+            <Typography color='white'>
               Instructions: Enter code into the keypad at the package locker. Step back and wait for
               the locker door to open.
             </Typography>
-            <Typography>Locker Access Code expires after 24 hours</Typography>
+            <Typography color='white'>Locker Access Code expires after 24 hours</Typography>
           </>
         ) : (
           <Typography>No package details available</Typography>
