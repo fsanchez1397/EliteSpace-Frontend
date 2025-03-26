@@ -2,6 +2,7 @@ import { CircularProgress, Grid2, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useGetLeaseQuery, useSignLeaseMutation } from '../../features/DigitalLease/api/leaseApi';
 import NewLease from '../../features/DigitalLease/NewLease';
+import { BackButton } from '../components/BackButton';
 
 const DigitalLease = () => {
   const [signature, setSignature] = useState('');
@@ -28,6 +29,7 @@ const DigitalLease = () => {
 
   return (
     <>
+      <BackButton />
       {isSuccess ? (
         <Grid2 container justifyContent='center' alignItems='center' sx={{ minHeight: '100vh' }}>
           <Typography align='center' variant='h4' sx={{ fontWeight: 500 }}>
