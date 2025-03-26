@@ -84,7 +84,12 @@ export const PackageDetails = () => {
   return (
     <Container sx={{ mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Stack sx={{ width: '100%', maxWidth: 400, mt: 2 }} spacing={2}>
-        <Button variant='outlined' onClick={handleBackClick} sx={{ alignSelf: 'flex-start' }}>
+        <Button
+          variant='contained'
+          onClick={handleBackClick}
+          color='primary'
+          sx={{ alignSelf: 'flex-start' }}
+        >
           Back
         </Button>
         {loading ? (
