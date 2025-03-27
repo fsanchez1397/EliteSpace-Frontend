@@ -81,3 +81,12 @@
   width: 25%;
   animation: sway 4s infinite ease-in-out;
 }
+
+.dashboard-page {
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to top, rgba(91, 62, 150, 0.5), rgba(91, 62, 150, 0));
+  background-color: black;
+}
