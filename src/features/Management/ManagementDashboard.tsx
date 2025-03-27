@@ -1,6 +1,6 @@
 import { Container, Stack, Typography } from '@mui/material';
 import ComplaintCard from './ComplaintCard';
-
+import { useGetAllComplaintsQuery } from '../Services/userSlice';
 //Example Complaint obj
 interface complaintCardProps {
   title: string;
@@ -46,36 +46,47 @@ const complaintsExample = [
     complaintId: 4,
   },
 ];
+
 function ManagementDashboard() {
-  return (
-    <Container>
-      <Stack sx={{ marginBottom: 4, marginTop: 4 }}>
-        <Typography variant='h3'> Complaints</Typography>
-      </Stack>
-      <Stack>
-        {complaintsExample.map(
-          ({
-            title,
-            description,
-            tenantName,
-            status,
-            priority,
-            complaintId,
-          }: complaintCardProps) => (
-            <ComplaintCard
-              key={complaintId}
-              title={title}
-              description={description}
-              tenantName={tenantName}
-              status={status}
-              priority={priority}
-              complaintId={complaintId}
-            />
-          ),
-        )}
-      </Stack>
-    </Container>
-  );
+  const { data, error, isLoading } = useGetAllComplaintsQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error</div>;
+  if (!data) return <div>No data</div>;
+
+  if (data) {
+    console.log(data);
+    const complaintsArr = data.complaints;
+    return (
+      <Container>
+        <Stack sx={{ marginBottom: 4, marginTop: 4 }}>
+          <Typography variant='h3'> Complaints</Typography>
+        </Stack>
+        <Stack>
+          {complaintsArr.map(
+            ({
+              description: description,
+              complaintTitle: title,
+              tenantId: tenantName,
+              resolvedAt: status,
+              priority: priority,
+              id: complaintId,
+            }: any) => (
+              <ComplaintCard
+                key={complaintId}
+                title={title}
+                description={description}
+                tenantName={tenantName}
+                status={status}
+                priority={priority}
+                complaintId={complaintId}
+              />
+            ),
+          )}
+        </Stack>
+      </Container>
+    );
+  }
 }
 
 export default ManagementDashboard;
