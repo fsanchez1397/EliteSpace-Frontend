@@ -2,14 +2,25 @@
 import Stack from '@mui/material/Stack';
 import DashboardCard from '../../features/Dashboard/components/DashboardCard';
 import LockUnlock from '../../features/Dashboard/components/LockUnlockCard';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../stores/store';
 
 const height = { xs: 120, md: 150 };
 const otherCardHeight = { xs: 120, md: 300 };
 
 const Dashboard = () => {
+  const user = useSelector((state: RootState) => state.user.currentUser);
+
   return (
     <Container maxWidth='md'>
+      {user ? (
+        <Typography variant='h4' sx={{ color: 'background.default' }}>
+          Welcome, {user?.firstName}!
+        </Typography>
+      ) : (
+        <Typography style={{ visibility: 'hidden' }}>Welcome!</Typography>
+      )}
       <Stack spacing={2}>
         <Stack
           direction={{ xs: 'column', md: 'row' }}

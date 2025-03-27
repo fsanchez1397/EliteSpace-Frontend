@@ -1,11 +1,14 @@
 import AppProvider from './Provider';
 import AppRouter from './Router';
+import '../features/Home/LandingPage.css';
 
 function App() {
   return (
-    <AppProvider>
-      <AppRouter></AppRouter>
-    </AppProvider>
+    <div className='dashboard-page'>
+      <AppProvider>
+        <AppRouter></AppRouter>
+      </AppProvider>
+    </div>
   );
 }
 
