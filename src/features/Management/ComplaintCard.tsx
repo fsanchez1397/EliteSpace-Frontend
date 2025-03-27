@@ -18,13 +18,13 @@ function ComplaintCard({
   createdAt,
 }: complaintCardProps) {
   let priorityColor: string = '';
-  if (priority == 'high') {
+  if (priority == 'High') {
     priorityColor = 'red';
   }
-  if (priority == 'medium') {
+  if (priority == 'Medium') {
     priorityColor = 'yellow';
   }
-  if (priority == 'low') {
+  if (priority == 'Low') {
     priorityColor = 'gray';
   }
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
