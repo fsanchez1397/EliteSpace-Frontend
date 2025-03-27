@@ -11,8 +11,6 @@ interface complaintCardProps {
 function ComplaintCard({
   title,
   description,
-  // tenantName,
-  // status,
   priority,
   complaintId,
   createdAt,
