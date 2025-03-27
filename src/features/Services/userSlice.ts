@@ -34,7 +34,11 @@ export const userApi = createApi({
         body: complaint,
       }),
     }),
+    getAllComplaints: builder.query<any, void>({
+      query: () => `complaints/get-complaints`,
+      keepUnusedDataFor: 60,
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery, useSendComplaintMutation } = userApi;
+export const { useGetAllUsersQuery, useSendComplaintMutation, useGetAllComplaintsQuery } = userApi;
