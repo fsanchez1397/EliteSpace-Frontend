@@ -158,6 +158,7 @@ const NewLease = ({
             sx={{
               marginTop: '20px',
               width: '200px',
+              color: 'white',
             }}
             onClick={handleSignLease}
             disabled={signature.length === 0}
