@@ -52,7 +52,7 @@ const DigitalLease = () => {
         </Grid2>
       ) : (
         <Grid2 container justifyContent='center' alignItems='center' sx={{ minHeight: '100vh' }}>
-          <Typography variant='h4' sx={{ fontWeight: 500 }}>
+          <Typography variant='h4' sx={{ fontWeight: 500, color: '#FFFFFF' }}>
             No pending renewals.
           </Typography>
         </Grid2>

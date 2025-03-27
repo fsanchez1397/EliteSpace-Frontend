@@ -2,7 +2,6 @@ import { Paper, Stack, Container, Typography } from '@mui/material/';
 import { styled } from '@mui/material/styles';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
-import { BackButton } from '../../app/components/BackButton';
 
 interface PackageInfo {
   id: number;
@@ -90,19 +89,39 @@ export const SmartPackage = () => {
   };
 
   return (
-    <>
-      <BackButton />
-      <Container
+    <Container
+      sx={{
+        height: '600px',
+        marginTop: '60px',
+      }}
+    >
+      <Paper
         sx={{
-          mt: 5,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'relative',
+          padding: '20px',
+          borderRadius: '10px',
         }}
       >
-        <Stack sx={{ width: '100%', maxWidth: 400, mt: 8.5 }} spacing={2}>
-          <Typography variant='h5' sx={{ fontWeight: 'medium', textAlign: 'center' }}>
+        <Stack
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: { xs: 'auto', sm: 500 },
+            height: '100%',
+            margin: '0 auto',
+            gap: '30px',
+          }}
+          spacing={2}
+        >
+          <Typography
+            variant='h5'
+            sx={{
+              textAlign: 'center',
+              fontWeight: 500,
+              fontSize: '1.5rem',
+              lineHeight: '1.2',
+            }}
+          >
             Smart Package Locker
           </Typography>
 
@@ -137,7 +156,7 @@ export const SmartPackage = () => {
             <Typography>No packages have been delivered</Typography>
           )}
         </Stack>
-      </Container>
-    </>
+      </Paper>
+    </Container>
   );
 };
