@@ -82,6 +82,7 @@ const RegisterPage = () => {
           password: formData.password,
           phone: formData.phone,
           dob: formData.dob,
+          first_name: formData.firstName,
         }),
       });
 
