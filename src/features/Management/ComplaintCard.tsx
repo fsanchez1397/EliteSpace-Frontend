@@ -16,15 +16,16 @@ function ComplaintCard({
   complaintId,
 }: complaintCardProps) {
   let priorityColor: string = '';
-  if (priority === 'High') {
+  if (priority == 'high') {
     priorityColor = 'red';
   }
-  if (priority === 'Medium') {
+  if (priority == 'medium') {
     priorityColor = 'yellow';
   }
-  if (priority === 'Low') {
+  if (priority == 'low') {
     priorityColor = 'gray';
   }
+  console.log(priority, title);
   return (
     <Card
       key={complaintId}
@@ -41,10 +42,10 @@ function ComplaintCard({
           <b>Issuing Tenant: </b>
           {tenantName}
         </Typography>
-        <Typography>
+        {/* <Typography>
           <b>Status: </b>
           {status}
-        </Typography>
+        </Typography> */}
       </Stack>
     </Card>
   );
