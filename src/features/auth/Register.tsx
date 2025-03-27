@@ -12,6 +12,7 @@ import {
   Link,
   Modal,
   LinearProgress,
+  Container,
 } from '@mui/material';
 import { Link as Router } from 'react-router';
 import Logo from '../../assets/logo.svg?react';
@@ -163,13 +164,22 @@ const RegisterPage = () => {
   };
 
   return (
-    <Box
+    <Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+      }}
+    >
+      {/* <Box
       display='flex'
       justifyContent='center'
       alignItems='center'
       minHeight='100vh'
-      bgcolor='background.default'
-    >
+      // bgcolor='background.default'
+      > */}
       <Card sx={{ width: 400, p: 3, boxShadow: 3 }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', m: 1 }}>
@@ -441,7 +451,8 @@ const RegisterPage = () => {
           </Box>
         </CardContent>
       </Card>
-    </Box>
+      {/* </Box> */}
+    </Container>
   );
 };
 
