@@ -50,7 +50,7 @@ const GuestParkingApproved = () => {
           <strong>Expiration Time:</strong> {formatExpirationTime()}
         </Typography>
         <Link
-          to='/parking'
+          to='/dashboard'
           style={{
             textDecoration: 'none',
             width: '100%',
