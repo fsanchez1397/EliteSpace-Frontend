@@ -37,7 +37,7 @@ const NewLease = ({
           width: { xs: 'auto', sm: 800 },
         }}
       >
-        <Typography variant='h4' sx={{ fontWeight: 500 }}>
+        <Typography variant='h4' sx={{ fontWeight: 500, color: 'white' }}>
           Digital Lease Agreement
         </Typography>
 
@@ -112,8 +112,10 @@ const NewLease = ({
             alignItems: 'center',
           }}
         >
-          <Typography variant='h6'>Enter Name Below to Accept Terms</Typography>
-          <Typography variant='subtitle1' component='p' sx={{ pb: 3 }}>
+          <Typography variant='h6' sx={{ color: 'white' }}>
+            Enter Name Below to Accept Terms
+          </Typography>
+          <Typography variant='subtitle1' component='p' sx={{ pb: 3, color: 'white' }}>
             By typing your name below,you understand and agree that this form of electronic
             signature has the same legal force and effect as a manual signature.
           </Typography>
@@ -130,6 +132,21 @@ const NewLease = ({
               '& .MuiInputBase-input': {
                 fontFamily: "'Dancing Script', cursive",
                 fontSize: '24px',
+                color: 'white',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'white',
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'white',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'white',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'white',
+                },
               },
             }}
           />
