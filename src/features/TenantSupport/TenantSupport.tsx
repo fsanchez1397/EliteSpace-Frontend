@@ -166,13 +166,15 @@ export const TenantSupport = () => {
                 gap: '30px',
               }}
             >
-              <Typography variant='h3'> Tenant Support</Typography>
-              <Stack spacing={3} sx={{ mt: 4, m: 1 }}>
-                <Stack>
-                  <Typography sx={{ mt: 4 }} variant='h6'>
+              <Typography sx={{ textAlign: { sm: 'center' } }} variant='h3'>
+                Tenant Support
+              </Typography>
+              <Stack spacing={3} sx={{ mt: 4, m: 1, maxWidth: '100%' }}>
+                <Stack spacing={1} sx={{ width: '100%' }}>
+                  <Typography sx={{ mt: 2 }} variant='h6'>
                     Which one of the following best describes the issue?
                   </Typography>
-                  <FormControl sx={{ width: 500 }} required>
+                  <FormControl sx={{ width: '100%' }} required>
                     <InputLabel id='issue-label'>Issue</InputLabel>
                     <Select
                       labelId='issue-label'
@@ -191,7 +193,7 @@ export const TenantSupport = () => {
                     </Select>
                   </FormControl>
                 </Stack>
-                <Stack spacing={3}>
+                <Stack spacing={1}>
                   <Typography variant='h6'>
                     Kindly describe the issue below as descriptively as possible so we can route you
                     to the proper channel in our team.
@@ -202,7 +204,7 @@ export const TenantSupport = () => {
                     rows={4}
                     variant='outlined'
                     inputRef={extraDetailsRef}
-                    sx={{ width: 500 }}
+                    sx={{ width: '100%' }}
                   />
                 </Stack>
                 <Input type='file' inputProps={{ accept: 'image/*' }} disableUnderline={true} />
