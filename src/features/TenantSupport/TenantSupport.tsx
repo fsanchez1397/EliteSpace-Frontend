@@ -96,6 +96,7 @@ export const TenantSupport = () => {
   const extraDetailsRef = useRef<HTMLInputElement>(null);
   const [sendComplaint] = useSendComplaintMutation();
   const issueMap = new Map<string, { category: string; priority: string }>();
+  const isOther: boolean = selectedIssue.category === 'other' ? true : false;
   //Loop through each issue, loop through each option in that issue and get the issue category and priority for each label
   issues.forEach((issue) => {
     issue.options.forEach((option) => {
@@ -107,6 +108,7 @@ export const TenantSupport = () => {
   const handleChange = (event: SelectChangeEvent<string>) => {
     const currIssue = event.target.value;
     const issueDetails = issueMap.get(currIssue);
+
     if (issueDetails) {
       dispatch(setSelectedIssue({ subCategory: currIssue, ...issueDetails }));
     }
@@ -202,6 +204,7 @@ export const TenantSupport = () => {
                     id='issue-description'
                     multiline
                     rows={4}
+                    required={isOther}
                     variant='outlined'
                     inputRef={extraDetailsRef}
                     sx={{ width: '100%' }}
